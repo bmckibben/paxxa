@@ -1,0 +1,15 @@
+<%# navigation styled for Bootstrap 3.0 %>
+<nav class="navbar navbar-fixed-top" style='background:url(<%= asset_path "linebk.gif" %>) repeat left top;'>
+  <div class="container navbar-container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+      </button>
+      <%= link_to image_tag("paxxa_txt.png"), root_path, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse">
+        <%= render 'layouts/navigation_links' %>
+    </div>
+  </div>
+</nav>
