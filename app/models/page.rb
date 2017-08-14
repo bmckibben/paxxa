@@ -1,4 +1,5 @@
-class Page < ActiveRecord::Base
+class Page 
+  include Mongoid::Document
   validates_presence_of :title
   before_save :render_attributes
   
