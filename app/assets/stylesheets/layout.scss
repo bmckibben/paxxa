@@ -1,0 +1,394 @@
+html, body {
+  height: 100%;
+}
+
+main {
+  // @extend .container;
+  padding-bottom: 80px;
+  width: 100%;
+  min-height: 100%;
+  //padding-left: 20px;
+  //padding-right: 40px;
+  padding-top:30px;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 50px auto -100px;  
+  }
+
+section {
+  // @extend .row;
+  margin-top: 20px;
+  }
+
+footer {
+  position: relative;
+  height: 50px;
+  clear:both;
+  color: #666;
+  padding-left: 2em;
+  background: transparent;
+  border-top: 1px solid #666;
+} 
+
+.top10 { margin-top: 10px; }
+.top20 { margin-top: 20px; }
+.top30 { margin-top: 30px; }
+.top50 { margin-top: 50px; }
+.top100 { margin-top: 100px; }
+
+#error_explanation {
+  // @extend .alert;
+  // @extend .alert-danger;
+}
+
+#error_explanation h2 {
+  font-size: 16px;
+}
+
+.alert {
+  z-index: 1050;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
+}
+header nav ul li {
+  display: inline;
+}
+
+body { 
+  /*padding-top: 40px;*/
+  color: #ccc;
+  background: #fff;
+}  
+
+/* Serif font */
+body, 
+#main-title,
+.mainText,
+.article p,
+.article-title h1,
+.article-title h2,
+.hentry .article-date,
+.article-extras strong,
+.article-entry h3,
+.article-entry blockquote,
+.article-entry cite,
+.comment-text h3,
+.comment-text blockquote,
+.comment-text cite,
+.more-posts .page-title,
+.more-posts .notice,
+#more-posts-inner h1,
+#more-posts-inner article span,
+#comments h3,
+#respond h3,
+#upper-footer-widgets .widget_text,
+#error404 {
+  font-family: Rokkitt, serif;
+  color: #666;
+  font-size: 16px;
+}
+
+.mainText {
+  font-size: 18px;
+  color: #ccc;
+}
+
+/* thanks to: Ultimate CSS Gradient Generator (http://www.colorzilla.com/gradient-editor/) */
+.btn-primary:hover {
+background: rgb(45,119,175); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(45,119,175,1) 0%, rgba(0,153,255,1) 50%, rgba(0,133,242,1) 51%, rgba(125,185,232,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(45,119,175,1)), color-stop(50%,rgba(0,153,255,1)), color-stop(51%,rgba(0,133,242,1)), color-stop(100%,rgba(125,185,232,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(45,119,175,1) 0%,rgba(0,153,255,1) 50%,rgba(0,133,242,1) 51%,rgba(125,185,232,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(45,119,175,1) 0%,rgba(0,153,255,1) 50%,rgba(0,133,242,1) 51%,rgba(125,185,232,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(45,119,175,1) 0%,rgba(0,153,255,1) 50%,rgba(0,133,242,1) 51%,rgba(125,185,232,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(45,119,175,1) 0%,rgba(0,153,255,1) 50%,rgba(0,133,242,1) 51%,rgba(125,185,232,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d77af', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary {
+background: #7db9e8; /* Old browsers */
+background: -moz-linear-gradient(top,  #7db9e8 0%, #0085f2 49%, #0099ff 50%, #2d77af 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(49%,#0085f2), color-stop(50%,#0099ff), color-stop(100%,#2d77af)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #7db9e8 0%,#0085f2 49%,#0099ff 50%,#2d77af 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #7db9e8 0%,#0085f2 49%,#0099ff 50%,#2d77af 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #7db9e8 0%,#0085f2 49%,#0099ff 50%,#2d77af 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #7db9e8 0%,#0085f2 49%,#0099ff 50%,#2d77af 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#2d77af',GradientType=0 ); /* IE6-9 */
+}
+
+.navbar-inner {
+  /*background: asset-url("linebk.gif", image) repeat left top;*/
+  background-color: #999;
+  }
+
+.nav > li > a {
+    color: #66CCFF;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: none !important;
+    font-family: verdana, serif;
+}
+
+.nav > li > a:link {
+    color: #66CCFF;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.nav > li > a:visited {
+    color: #66CCFF;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.nav > li > a:active {
+    color: #66CCFF;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
+    color: #CC33FF !important;
+    text-decoration: underline;
+    float: none;
+    padding: 10px 15px;
+    background-color: transparent;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border: none;  
+}
+
+.navbar {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.navbar-container {
+  width: 100%;
+}
+
+.float_box {
+    background-color: #000;
+    border: 1px solid #999;
+    border-radius: 10px;
+    margin-top:0;
+    padding: 1em;
+    height:90%;
+    max-width: 250px;
+    color:#999;
+    background:url(asset_path("star.png")) no-repeat center; 
+    background-size:100% 100%;
+}
+
+.float_box h3 {
+  margin-bottom:100px;
+}
+
+.float_box a{
+  margin-left: 10px;
+    color: #66CCFF;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight:bold;
+}
+
+.float_box a:focus, .float_box a:hover {
+    color: #CC33FF !important;
+    text-decoration: underline;
+    float: none;
+    padding: 10px 15px;
+    background-color: transparent;
+}
+
+.float_box_white {
+    background-color: #dddddd;
+    border: 1px solid #333333;
+    border-radius: 10px;
+    margin-top: 1.5em;
+    padding: 1em;
+    color: #000009;
+}
+.panel-body {
+  color: #000009;
+}
+.rightCol {
+  margin-right: 50px;
+  width: 90%;
+}
+
+.topCol {
+  margin-top: 1em;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.modal-header {
+  min-height: 0;
+  color: #666;
+}
+
+.modal-footer {
+  padding: 5px;
+}
+
+.modal-dialog {
+    width: 800px;
+    color: #666;
+}
+
+#myModalLabel {
+  margin: 0;
+}
+
+.white-scroller {
+  color: #000000;
+  padding: 2em;
+  background-color: #ddd;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  height: 75%;
+  overflow: hidden;
+  margin-top:15px; 
+}
+
+.white-scroller h1, 
+.white-scroller h2 {
+  margin-top: 0;
+}
+
+.white-scroller hr {
+  border-color: #000;
+}
+
+.chapter-scroller {
+  color: #000000;
+  padding: 2em;
+  background-color: #ddd;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  /*height: 75%;
+  overflow-x: hidden;
+  overflow-y: scroll;  */
+}
+
+.award-year {
+  color: #fff;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0000ff+0,bcd3e5+100 */
+background: #0000ff; /* Old browsers */
+background: -moz-linear-gradient(left, #0000ff 0%, #bcd3e5 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #0000ff 0%,#bcd3e5 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #0000ff 0%,#bcd3e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#bcd3e5',GradientType=1 ); /* IE6-9 */ 
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+.widthtest {
+  background-color: blue;
+}
+
+@media (max-width: 400px) {
+  /* phone size */
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .widthtest {
+    background-color: red;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+  
+  .navbar-lower {
+    margin-top: 100px;
+  }  
+
+  main {
+   padding-left: 10px;
+   padding-right: 10px;
+  }
+
+.navbar-brand img {
+  height: auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }  
+  
+  main {
+   // padding:100px 10px 0;
+  }
+}
+
+
+/* Pages with gradient background */
+.gradient-main {
+  background-image: linear-gradient(to bottom, black 0%, #000099 100%);
+}
+
+.gradient-body {
+    background: #000099 none repeat scroll 0 0;
+    color: #ccc;
+}
+
+.gradient-footer {
+    background: #000099 none repeat scroll 0 0;
+    border-top: 1px solid #66ccff;
+    clear: both;
+    color: #337ab7;
+    height: 50px;
+    padding-left: 2em;
+    position: relative;
+}
+
+.glossary-word {
+    font-size: 2em;
+    font-weight: bold;
+}

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'home#index'
 
-  	devise_for :users
-	root 'home#index'
-	get "angular_test", to: "angular_test#index"
-	resources :pages, :member => {:revert => :post, :revisions => :get}
-	#root 'pages#show'
+  get 'static_pages/about', :as => 'static_about'
+  get 'static_pages/help', :as => 'static_help'
+  get 'static_pages/contact', :as => 'static_contact'
+  get 'static_pages/teachings', :as => 'static_teachings'
+  get 'static_pages/startrek', :as => 'static_startrek'
+  get 'static_pages/title', :as => 'static_title'
+  get 'static_pages/summary', :as => 'static_summary'
+    
 end

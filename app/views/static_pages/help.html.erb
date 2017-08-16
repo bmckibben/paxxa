@@ -1,0 +1,105 @@
+  <div class="row">
+    <div class="col-md-2">
+    &nbsp;
+    </div>  
+    <div class="col-md-8" >   
+    <h1>Panel List Example</h1>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel 1</h3>
+          </div>
+          <div class="panel-body">
+            <button class="btn btn-primary btn-xs" type="button" onclick="$('#expand1').show()"><span class="glyphicon glyphicon-collapse-down"></span>Summary</button>
+            <a href="testContent1.html" data-target="#mdlNarrative" class="btn btn-primary btn-xs" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Narrative</a>
+            <div id="expand1" class="well">
+              <div class="input-group">
+                  <span class="input-group-addon">Input 1.1</span>
+                  <input type="text" class="form-control" placeholder="Testing">
+                </div>
+              <div class="input-group">
+                  <span class="input-group-addon">Input 1.2</span>
+                  <input type="text" class="form-control" placeholder="Testing">
+                </div>                
+                <button class="btn btn-primary btn-xs"  onclick="$('#expand1').hide()">Submit</button>
+            </div>
+          </div>
+        </div>
+
+         <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel 2</h3>
+          </div>
+          <div class="panel-body">
+            <button class="btn btn-primary btn-xs" type="button" onclick="$('#expand2').show()"><span class="glyphicon glyphicon-collapse-down"></span>Summary</button>
+            <a href="testContent2.html" data-target="#mdlNarrative" class="btn btn-primary btn-xs" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Narrative</a>
+            <div id="expand2" class="well">
+              <div class="input-group">
+                  <span class="input-group-addon">Input 2.1</span>
+                  <input type="text" class="form-control" placeholder="Testing">
+                </div>
+              <div class="input-group">
+                  <span class="input-group-addon">Input 2.2</span>
+                  <input type="text" class="form-control" placeholder="Testing">
+                </div>                
+                <button class="btn btn-primary btn-xs"  onclick="$('#expand2').hide()">Submit</button>
+            </div>
+          </div>
+        </div> 
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel 3</h3>
+          </div>
+          <div class="panel-body">
+            <button class="btn btn-primary btn-xs" type="button" onclick="$('#expand3').show()"><span class="glyphicon glyphicon-collapse-down"></span>Summary</button>
+            <a href="testContent3.html" data-target="#mdlNarrative" class="btn btn-primary btn-xs" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Narrative</a>
+            <!-- <a href="#buildUrl('secure:studio.tips')#" data-target="##mdlNarrative" data-toggle="modal"> -->
+            <div id="expand3" class="well">
+              <div class="input-group">
+                  <span class="input-group-addon">Input 3.1</span>
+                  <input type="text" class="form-control" placeholder="Testing">
+                </div>
+              <div class="input-group">
+                  <span class="input-group-addon">Input 3.2</span>
+                  <input type="text" class="form-control" placeholder="Testing">
+                </div>                
+                <button class="btn btn-primary btn-xs"  onclick="$('#expand3').hide()">Submit</button>
+            </div>
+          </div>
+        </div>
+       
+    </div>  
+    <div class="col-md-2">
+    &nbsp;
+    </div>  
+</div> <!-- row -->      
+
+<div id="mdlNarrative" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove-circle"></span> </button>
+      <h3 id="myModalLabel">Text Edit</h3>
+      </div>
+      <div class="modal-body">
+        <p>No Body</p>       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<script>
+$( document ).ready(function() {
+  $('.well').hide();
+
+  $("#mdlNarrative").on('hidden.bs.modal', function () {
+    $(this).data('bs.modal', null);
+  });
+  
+});
+</script>

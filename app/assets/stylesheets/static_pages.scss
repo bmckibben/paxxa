@@ -1,0 +1,60 @@
+.title-page h1 {
+    font-size: 30pt;
+    font-weight:bold;
+    color: #428bca; 
+}
+
+.title-page h2 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14pt;
+    font-weight:bold;
+    font-style: italic;
+}
+
+.title-page h3 {
+    font-size: 12pt;
+    font-weight:normal;
+}
+
+.title-page div {
+    margin-top: 50px;
+    /*margin-bottom: 50px;  */  
+}
+
+
+.static-page h1 {
+    font-size: 30pt;
+    font-weight:bold;
+    color: #428bca; 
+}
+
+.static-page h2 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14pt;
+    font-weight:bold;
+    font-style: italic;
+}
+
+.static-page h3 {
+    font-size: 12pt;
+    font-weight:normal;
+}
+
+.static-page div {
+    margin-top: 50px;
+    /*margin-bottom: 50px;  */  
+}
+
+.static-page ul {
+  list-style-type: circle;
+  margin: 0;
+  outline: 0;
+  padding: 0; 
+}
+
+.static-page ol {
+  list-style-type: decimal-leading-zero;
+  margin: 0;
+  outline: 0;
+  padding: 0; 
+}

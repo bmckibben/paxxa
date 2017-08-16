@@ -8,8 +8,21 @@
       </button>
       <%= link_to image_tag("paxxa_txt.png"), root_path, class: "navbar-brand" %>
     </div>
-    <div class="collapse navbar-collapse">
-        <%= render 'layouts/navigation_links' %>
+    <div class="collapse navbar-collapse">       
+      <div class="pull-left">
+        <ul class="nav navbar-nav">
+        <%=  render 'layouts/navigation_links'  %>
+        </ul>
+        </div>
+        <div class="pull-right">
+        <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+          <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+        <% else %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </div>         
     </div>
   </div>
 </nav>
