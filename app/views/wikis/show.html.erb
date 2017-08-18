@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @wiki.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @wiki.author %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @wiki.body %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @wiki.parent %>
+</p>
+
+<p>
+  <strong>Revision:</strong>
+  <%= @wiki.revision %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @wiki.deleted %>
+</p>
+
+<%= link_to 'Edit', edit_wiki_path(@wiki) %> |
+<%= link_to 'Back', wikis_path %>

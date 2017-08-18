@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12">
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12">
+
+
+    <% @wikis.each do |wiki| %>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><h1><%= wiki.title %></h1></h3>
+          </div>
+          <div class="panel-body">
+            <div class="row wikiTags">
+                <div class="col-md-6 wikiTags">
+                  <%= wiki.parent %>
+                </div>
+                <div class="col-md-6 wikiActions">
+                  <%= link_to new_wiki_path(parent: wiki.parent) do %><i aria-hidden="false" class="fa fa-plus"></i><% end %>
+                  <%= link_to wiki do %><i aria-hidden="false" class="fa fa-eye"></i><% end %>
+                  <%= link_to edit_wiki_path(wiki) do %><i aria-hidden="false" class="fa fa-pencil"></i><% end %>
+                  <%= link_to wiki, method: :delete, data: { confirm: 'Are you sure?' } do %><i aria-hidden="false" class="fa fa-trash"></i><% end %>      
+                </div>  
+            </div>
+            <div class="row wikiBody">
+              <%= wiki.body %>
+            </div>
+          </div>            
+          <div class="panel-footer">  
+            <div class="row wikiAttributes">
+              <%= wiki.user.login if !wiki.user.nil? %> <%= wiki.last_revision if !wiki.last_revision.nil? %> <%= wiki.deleted %><br/>
+              Created:  <%= wiki.created_at.strftime("%Y-%m-%d %R") %><br/>Updated: <%= wiki.updated_at.strftime("%Y-%m-%d %R") %> %>
+            </div>
+          </div>  
+
+        </div>
+
+    <% end %>
+  </div>
+</div>
