@@ -5,7 +5,7 @@ class CreateWikis < ActiveRecord::Migration
       t.integer :user_id
       t.text :body
       t.integer :parent
-      t.boolean :revision
+      t.integer :prev_revision
       t.boolean :deleted
 
       t.timestamps null: false

@@ -17,7 +17,7 @@
   <div class="field">
     <%= f.label :author %><br>
     <%= current_user.login %>
-    <%= f.hidden_field :author, { :value => current_user.id } %>
+    <%= f.hidden_field :user_id, { :value => current_user.id } %>
   </div>
   <div class="field">
     <%= f.label :body %><br>
@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :last_revision %><br>
-    <%= f.text_field :last_revision %>
+    <%= f.text_field :prev_revision %>
   </div>
   <div class="field">
     <%= f.label :deleted %><br>

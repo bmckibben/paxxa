@@ -31,7 +31,7 @@
           </div>            
           <div class="panel-footer">  
             <div class="row wikiAttributes">
-              <%= wiki.user.login if !wiki.user.nil? %> <%= wiki.last_revision if !wiki.last_revision.nil? %> <%= wiki.deleted %><br/>
+              <%= wiki.user.login if !wiki.user.nil? %> <%= wiki.prev_revision if !wiki.prev_revision.nil? %> <%= wiki.deleted %><br/>
               Created:  <%= wiki.created_at.strftime("%Y-%m-%d %R") %><br/>Updated: <%= wiki.updated_at.strftime("%Y-%m-%d %R") %> %>
             </div>
           </div>  

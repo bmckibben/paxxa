@@ -44,9 +44,8 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.update(wiki_params)
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully updated.' }
+        format.html { redirect_to wikis_url, notice: 'Wiki was successfully updated.' }
         format.json { render :show, status: :ok, location: @wiki }
-        redirect_to action: "index"
       else
         format.html { render :edit }
         format.json { render json: @wiki.errors, status: :unprocessable_entity }
@@ -72,6 +71,6 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:title, :author, :body, :parent, :revision, :deleted)
+      params.require(:wiki).permit(:title, :user_id, :body, :parent, :prev_revision, :deleted)
     end
 end
