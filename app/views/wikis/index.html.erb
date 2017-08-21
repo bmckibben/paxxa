@@ -1,10 +1,12 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 col-sm-12">
     <p id="notice"><%= notice %></p>
-  </div>
+    <button type="button" class="btn btn-default sidebar-toggle">Toggle sidebar</button>
+  </div> 
 </div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2 col-sm-12">
+<div class="row" id="row-main">
+
+  <div class="col-md-10" id="content">
 
 
     <% @wikis.each do |wiki| %>
@@ -15,4 +17,17 @@
 
     <% end %>
   </div>
+
+  <div class="col-md-2 white-scroller" id="sidebar">
+    <ul>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+    </ul>    
+  </div>
+
 </div>

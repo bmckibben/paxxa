@@ -14,4 +14,41 @@
 .wiki-panel {
 	padding-left: 1rem;
 	padding-right: 1rem;
+	margin-right: 4rem;
+	margin-left: 4rem;
+}
+
+.wiki-title{
+	font-family: Rokkitt, serif;
+	font-size: 3rem;
+	margin-bottom: 0;
+	line-height: 3.4rem;
+}
+
+.collapsed {
+    display: none; /* hide it for small displays */
+}
+
+@media (min-width: 992px) {
+    .collapsed {
+        display: block;
+        margin-right: -25%; /* same width as sidebar */
+    }
+}
+
+#row-main {
+    overflow-x: hidden; /* necessary to hide collapsed sidebar */
+}
+
+#content {
+    -webkit-transition: width 0.3s ease;
+    -moz-transition: width 0.3s ease;
+    -o-transition: width 0.3s ease;
+    transition: width 0.3s ease;
+}
+#sidebar {
+    -webkit-transition: margin 0.3s ease;
+    -moz-transition: margin 0.3s ease;
+    -o-transition: margin 0.3s ease;
+    transition: margin 0.3s ease;
 }

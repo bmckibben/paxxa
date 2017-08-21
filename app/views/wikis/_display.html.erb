@@ -1,17 +1,21 @@
           <div class="panel-heading">
-            <h3 class="panel-title"><%= wiki.title %></h3>
-          </div>
-          <div class="panel-body">
-            <div class="row border-bottom">
-                <div class="col-md-6 wiki-tags">
-                  <%= wiki.parent %>
+            <div class="row">
+                <div class="col-md-9 wiki-tags">
+                  <p class="wiki-title"><%= wiki.title %></p>
                 </div>
-                <div class="col-md-6 wiki-actions right">
+                <div class=" col-md-3 wiki-actions right">
                   <%= link_to new_wiki_path(parent: wiki.id) do %><i aria-hidden="false" class="fa fa-plus"></i><% end %>
                   <%= link_to wiki do %><i aria-hidden="false" class="fa fa-eye"></i><% end %>
                   <%= link_to edit_wiki_path(wiki) do %><i aria-hidden="false" class="fa fa-pencil"></i><% end %>
                   <%= link_to wiki, method: :delete, data: { confirm: 'Are you sure?' } do %><i aria-hidden="false" class="fa fa-trash"></i><% end %>      
-                </div>  
+                </div>
+            </div>                  
+          </div>
+          <div class="panel-body">
+            <div class="row border-bottom">
+                <div class="col-md-12 wiki-tags">
+                  <%= wiki.parent %>
+                </div> 
             </div>
             <div class="row wiki-body">
               <%= wiki.body %>
