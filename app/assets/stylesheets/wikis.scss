@@ -32,7 +32,7 @@
 @media (min-width: 992px) {
     .collapsed {
         display: block;
-        margin-right: -25%; /* same width as sidebar */
+        margin-right: -180px; /* same width as sidebar */
     }
 }
 
@@ -51,4 +51,10 @@
     -moz-transition: margin 0.3s ease;
     -o-transition: margin 0.3s ease;
     transition: margin 0.3s ease;
+    width: 180px;
+}
+
+.sidebar-toggle {
+    cursor: pointer;
+    margin-right:2rem;
 }
