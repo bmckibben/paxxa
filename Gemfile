@@ -31,6 +31,7 @@ gem 'angularjs-rails', '1.5.6'
 gem 'will_paginate', '~> 3.0.5'
 # provides a CRSF Token Header for angularjs posts
 gem 'angular_rails_csrf', '1.0.4'
+gem 'simple_enum', '~> 2.0.0'
 
 # per heroku
 gem 'rails_12factor'

@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get 'static_pages/summary', :as => 'static_summary'
 
   resources :wikis
-  resources :users    
+  resources :admins
+
 end
