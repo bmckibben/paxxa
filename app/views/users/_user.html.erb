@@ -1,0 +1,15 @@
+<td>
+  <%= link_to user.email, edit_user_registration_path(user) %>
+</td>
+<td>
+  <%= user.email %>
+</td>
+<td>
+  role
+</td>
+<td>
+<!--  -->
+</td>
+<td>
+  <%= link_to user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do %><i aria-hidden="false" class="glyphicon glyphicon-trash"></i><% end %>
+</td>

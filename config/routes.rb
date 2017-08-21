@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :wikis
+
   devise_for :users
   root 'home#index'
 
@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get 'static_pages/startrek', :as => 'static_startrek'
   get 'static_pages/title', :as => 'static_title'
   get 'static_pages/summary', :as => 'static_summary'
-    
+
+  resources :wikis
+  resources :users    
 end

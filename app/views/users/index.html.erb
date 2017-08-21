@@ -1,48 +1,17 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 center">
-      <p class="page-title">Users</p>
 
-      <table class="responsive-table" style="margin:auto;">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Calendar</th>
-            <th>LDAP Group</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Sign In Count</th>
-            <th>Last Sign In</th>
-            <th>Role</th>
-            <th><%= link_to 'New User', new_user_path,  class: "btn btn-primary pull-right" %></th>
-          </tr>
-        </thead>
-
+<div class="container">
+  <div class="row top50">
+    <h3>Users</h3>
+    <div class="column">
+      <table class="table">
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= user.id %></td>
-              <td><%= user.login %></td>
-              <td><%= user.calendar.name if !user.calendar.nil? %></td>
-              <td><%= user.calendar.ldap_group if !user.calendar.nil? %></td>
-              <td><%= user.first_name %></td>
-              <td><%= user.last_name %></td>
-              <td style="text-align:center;"><%= user.sign_in_count %></td>
-              <td><%= user.last_access %></td>
-              <td><%= user.role.to_s.titleize %></td>
-              <td>
-                <%= link_to edit_user_path(user) do %><i aria-hidden="false" class="glyphicon glyphicon-pencil"></i><% end %>
-              </td>
+              <%= render user %>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-      <br>
-      
-
     </div>
   </div>
 </div>
-

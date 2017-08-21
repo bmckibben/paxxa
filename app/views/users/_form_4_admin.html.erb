@@ -17,14 +17,6 @@
     <%= f.text_area :login %>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_area :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_area :last_name %>
-  </div>
-  <div class="field">
     <%= f.label :role %><br>
     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
   </div>
@@ -32,10 +24,6 @@
     <%= f.label :email %><br>
     <%= f.email_field :email %>
   </div>
-  <div class="field">
-    <%= f.label :calendar %><br>
-    <%= f.collection_select :calendar_id, Calendar.all, :id, :name, include_blank: "", class: "form-control" %>
-  </div> 
   <div class="actions">
      <%= f.hidden_field(:id) %>
      <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-right" %>

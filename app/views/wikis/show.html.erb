@@ -7,7 +7,7 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @wiki.author %>
+  <%= @wiki.user.inspect %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Revision:</strong>
-  <%= @wiki.revision %>
+  <%= @wiki.prev_revision %>
 </p>
 
 <p>
@@ -32,3 +32,5 @@
 
 <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
 <%= link_to 'Back', wikis_path %>
+
+<%= @wiki.inspect %>
