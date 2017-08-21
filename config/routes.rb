@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :admins
   devise_for :users
   root 'home#index'
 
@@ -12,6 +13,5 @@ Rails.application.routes.draw do
   get 'static_pages/summary', :as => 'static_summary'
 
   resources :wikis
-  resources :admins
 
 end

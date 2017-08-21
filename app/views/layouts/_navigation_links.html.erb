@@ -1,5 +1,6 @@
 <%# add navigation links to this file %>
     <% if user_signed_in? %>
+    <li><%= link_to "Wiki", wikis_path, :itemprop=>"url" %></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu">
@@ -14,7 +15,14 @@
         <li><%= link_to 'FAQ', static_help_path %></li>
         <li><%= link_to 'About', static_about_path %></li>
       </ul>
-    </li>  
-
+    </li>
+    <% if current_user.role_cd == 4 %>  
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><%= link_to 'Users', admins_path %></li>
+      </ul>
+    </li>
+    <% end %>
     <% end %>     
  

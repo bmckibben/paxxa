@@ -10,33 +10,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= current_user.login %>
-    <%= f.hidden_field :user_id, { :value => current_user.id } %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :parent %><br>
-    <%= f.number_field :parent %>
-  </div>
-  <div class="field">
-    <%= f.label :last_revision %><br>
-    <%= f.text_field :prev_revision %>
-  </div>
-  <div class="field">
-    <%= f.label :deleted %><br>
-    <%= f.check_box :deleted %>
-  </div>
-  <div class="actions">
-    <%= link_to 'Cancel', wikis_path, class: "btn btn-default pull-right" %>
-    <%= f.submit "Save" , class: "btn btn-success pull-right" %>    
-  </div>
-<% end %>
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= f.label :title %><%= f.text_field :title %></h3>
+          </div>
+          <div class="panel-body">
+            <div class="row border-bottom">
+                <div class="col-md-6 wiki-tags">
+                 <%= f.label :parent %><%= f.text_field :parent %>
+                </div>
+                <div class="col-md-6 wiki-actions right">
+                  <%= f.submit do %><i aria-hidden="false" class="fa fa-plus-circle"></i><% end %>
+                  <%= link_to wikis_path do %><i aria-hidden="false" class="fa fa-times-circle-o"></i><% end %>
+                </div>  
+            </div>
+            <div class="row wiki-body">
+              <%= f.text_area :body %>
+            </div>
+          </div>            
+          <div class="panel-footer">  
+            <div class="row wiki-attributes">
+              Author: <%= current_user.login %> 
+            </div>
+          </div>
+<% end %>          
