@@ -14,7 +14,7 @@
 .wiki-panel {
 	padding-left: 1rem;
 	padding-right: 1rem;
-	margin-right: 4rem;
+	margin-right: 1rem;
 	margin-left: 4rem;
 }
 
@@ -32,7 +32,7 @@
 @media (min-width: 992px) {
     .collapsed {
         display: block;
-        margin-right: -180px; /* same width as sidebar */
+        margin-right: -16%; /* same width as sidebar */
     }
 }
 
@@ -51,10 +51,21 @@
     -moz-transition: margin 0.3s ease;
     -o-transition: margin 0.3s ease;
     transition: margin 0.3s ease;
-    width: 180px;
+    width: 16%;
 }
 
 .sidebar-toggle {
     cursor: pointer;
     margin-right:2rem;
+    margin-bottom:1rem;
+    font-size: 2rem;
+}
+
+.sidebar-content {
+    width: 100%;
+}
+
+.sidebar-actions {
+    cursor: pointer;
+    font-size: 2rem;
 }

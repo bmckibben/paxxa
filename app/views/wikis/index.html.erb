@@ -3,7 +3,7 @@
     <p id="notice"><%= notice %></p>
   </div>  
   <div class="col-md-2 col-sm-12 pull-right" >
-    <i aria-hidden="false" class="fa fa-chevron-right sidebar-toggle"></i>
+    <i aria-hidden="false" class="fa fa-chevron-right sidebar-toggle pull-right"></i>
   </div>
 </div>
 <div class="row" id="row-main">
@@ -19,7 +19,11 @@
     <% end %>
   </div>
 
-  <div class="col-md-2 white-scroller" id="sidebar">
+  <div class="col-md-2" id="sidebar">
+    <div class="white-scroller sidebar-content">
+      <p id="sidebar-actions">
+        <i aria-hidden="false" class="fa fa-plus" id="new"></i>
+      </p>  
     <ul>
         <li>menu</li>
         <li>menu</li>
@@ -28,7 +32,8 @@
         <li>menu</li>
         <li>menu</li>
         <li>menu</li>
-    </ul>    
+    </ul>
+    </div>    
   </div>
 
 </div>
