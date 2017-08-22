@@ -4,10 +4,10 @@
                   <p class="wiki-title"><%= wiki.title %></p>
                 </div>
                 <div class=" col-md-3 wiki-actions right">
-                  <%= link_to new_wiki_path(parent: wiki.id) do %><i aria-hidden="false" class="fa fa-plus"></i><% end %>
-                  <%= link_to wiki do %><i aria-hidden="false" class="fa fa-eye"></i><% end %>
-                  <%= link_to edit_wiki_path(wiki) do %><i aria-hidden="false" class="fa fa-pencil"></i><% end %>
-                  <%= link_to wiki, method: :delete, data: { confirm: 'Are you sure?' } do %><i aria-hidden="false" class="fa fa-trash"></i><% end %>      
+                  <%= link_to new_wiki_path(parent: wiki.id) do %><i aria-hidden="false" class="fa fa-plus action-icon"></i><% end %>
+                  <%= link_to wiki do %><i aria-hidden="false" class="fa fa-eye action-icon"></i><% end %>
+                  <i aria-hidden="false" class="fa fa-pencil action-icon action-edit" data-id="<%= wiki.id %>"></i>
+                  <%= link_to wiki, method: :delete, data: { confirm: 'Are you sure?' } do %><i aria-hidden="false" class="fa fa-trash action-icon"></i><% end %>      
                 </div>
             </div>                  
           </div>
@@ -23,7 +23,7 @@
           </div>            
           <div class="panel-footer">  
             <div class="row wiki-attributes">
-              Author: <%= wiki.user.login if !wiki.user.nil? %> (previous: <%= wiki.prev_revision if !wiki.prev_revision.nil? %> <%= "deleted" if wiki.deleted? %>) |
+              Author: <%= wiki.user.login if !wiki.user.nil? %> (version: <%= wiki.version %> <%= "deleted" if wiki.deleted? %>) |
               Created:  <%= wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= wiki.updated_at.strftime("%Y-%m-%d %R") %> 
             </div>
           </div>

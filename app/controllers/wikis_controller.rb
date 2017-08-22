@@ -63,6 +63,19 @@ class WikisController < ApplicationController
     end
   end
 
+  def wiki_form
+    if params[:wiki_id] != "0"
+      @wiki = Wiki.find(params[:wiki_id])
+    else
+      @wiki = Wiki.new
+    end
+
+    respond_to do |format|
+      format.html { render layout: false}
+      format.json { render nothing: true }
+    end 
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki

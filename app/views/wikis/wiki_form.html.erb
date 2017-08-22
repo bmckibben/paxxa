@@ -1,0 +1,44 @@
+<%= form_for(@wiki) do |f| %>
+  <% if @wiki.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
+      <ul>
+      <% @wiki.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+          <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-9 wiki-tags">
+                  <p class="wiki-title"><%= f.label :title %><%= f.text_field :title, class: "form-control" %></p>
+                </div>
+                <div class=" col-md-3 wiki-actions right">
+                  <i aria-hidden="false" class="fa fa-plus-circle action-icon" id="wiki-save"></i>
+                  <i aria-hidden="false" class="fa fa-times-circle-o action-icon" id="wiki-cancel"></i>     
+                </div>
+            </div>  
+
+          </div>
+          <div class="panel-body">
+            <div class="row border-bottom">
+                <div class="col-md-12 wiki-tags">
+                 <%= f.label "Tags" %>
+                </div> 
+            </div>
+            <div class="row">
+              <div class="col-md-12 wiki-body">
+                <%= f.label :body %>
+                <%= f.text_area :body, class: "form-control" %>
+              </div>
+            </div>
+          </div>            
+          <div class="panel-footer">  
+            <div class="row wiki-attributes">
+              Author: <%= current_user.login %> |
+              Created:  <%= Time.now.strftime("%Y-%m-%d %R") %>
+            </div>
+          </div>
+<% end %>          
