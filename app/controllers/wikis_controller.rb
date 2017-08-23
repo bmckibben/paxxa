@@ -28,9 +28,8 @@ class WikisController < ApplicationController
     @wiki.author = current_user.id
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
-        format.json { render :show, status: :created, location: @wiki }
-        redirect_to action: "index"
+        format.html { redirect_to wikis_url, notice: 'Wiki was successfully created.' }
+        format.json { render :show, status: :ok, location: @wiki }
       else
         format.html { render :new }
         format.json { render json: @wiki.errors, status: :unprocessable_entity }
