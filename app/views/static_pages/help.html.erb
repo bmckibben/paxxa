@@ -5,15 +5,29 @@
         <div class="well nested-menu" style="width:100%; padding: 8px 0;">
 
                 <ul class="nav nav-list">
-                    <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 1</a>
+                    <li>
+                        <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+                        <a href="#" class="tree-menu">Header 1</a>
                         <ul class="nav nav-list tree">
-                            <li><a href="#" class="tree-menu">Link</a></li>
-                            <li><a href="#" class="tree-menu">Link</a></li>
-                            <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 1.1</a>
+                            <li>
+                              <a href="#" class="tree-menu">Link</a>
+                            </li>
+                            <li>
+                              <a href="#" class="tree-menu">Link</a>
+                            </li>
+                            <li>
+                              <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+                              <a href="#" class="tree-menu">Header 1.1</a>
                                 <ul class="nav nav-list tree">
-                                    <li><a href="#" class="tree-menu">Link</a></li>
-                                    <li><a href="#" class="tree-menu">Link</a></li>
-                                    <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 1.1.1</a>
+                                    <li>
+                                      <a href="#" class="tree-menu">Link</a>
+                                    </li>
+                                    <li>
+                                      <a href="#" class="tree-menu">Link</a>
+                                    </li>
+                                    <li>
+                                      <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+                                      <a href="#" class="tree-menu">Header 1.1.1</a>
                                         <ul class="nav nav-list tree">
                                             <li><a href="#" class="tree-menu">Link</a></li>
                                             <li><a href="#" class="tree-menu">Link</a></li>
@@ -59,6 +73,41 @@
         </div>
     </div>    
   </div>
+<div class="well nested-menu" style="width:100%; padding: 8px 0;">
+  <ul class="nav nav-list">
+    <li>
+      <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+      <a class="tree-menu" href="#">Parent 1</a>
+      (1)
+      <ul class="nav nav-list tree">
+        <li>
+          <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+          <a class="tree-menu" href="#">Child 1.1</a>
+          (2)
+        </li>
+      </ul>
+    </li>
+    <li>
+      <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+      <a class="tree-menu" href="#">Parent 2</a>
+      (1)
+      <ul class="nav nav-list tree">
+        <li>
+          <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+          <a class="tree-menu" href="#">Child 2.1</a>
+          (2)
+          <ul class="nav nav-list tree">
+            <li>
+              <i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i>
+              <a class="tree-menu" href="#">Child 2.1.1</a>
+              (3)
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>  
   <div class="row">
     <div class="col-md-2">
     &nbsp;
@@ -156,18 +205,11 @@
  
 <script>
 $( document ).ready(function() {
-//  $('.well').hide();
+  $('.well').hide();
 
-//  $("#mdlNarrative").on('hidden.bs.modal', function () {
-//    $(this).data('bs.modal', null);
-//  });
-
-    $('i.tree-toggler').click(function () {
-        $(this).parent().children('ul.tree').toggle(300);
-        $(this).toggleClass('fa-chevron-right fa-chevron-down')
-    });
-
-    $(".tree").hide()
+  $("#mdlNarrative").on('hidden.bs.modal', function () {
+    $(this).data('bs.modal', null);
+  });
 
 });
 </script>

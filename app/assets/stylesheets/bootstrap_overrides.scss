@@ -130,3 +130,20 @@ label {
 .nav > li > a.tree-menu {
   display:inline;
 }
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #337ab7;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    border-top-color: #337ab7;
+}
+
+.tooltip.right .tooltip-arrow {
+    border-top-color: #337ab7;
+}
+
+.tooltip.left .tooltip-arrow {
+    border-top-color: #337ab7;
+}
+

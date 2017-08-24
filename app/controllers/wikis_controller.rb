@@ -89,13 +89,34 @@ class WikisController < ApplicationController
       )
       SELECT * FROM category_tree ORDER BY path")
 
-
+    current_level = 1
+    first_item = true
       
-    menu = ""
+    menu = "<ul class='nav nav-list'>"
+
+
 
     nested_set.each do |link|
-      menu += ("--" * (link.path.length-1)) + link.tag_name + "<br/>"
+
+      if current_level < link.path.length
+        menu += " <ul class='nav nav-list tree'>"
+      elsif current_level > link.path.length
+        menu += "</li></ul>"
+      elsif !first_item  
+        menu += "</li>"
+      else  
+        first_item = false
+      end
+
+      menu += "<li><i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i><a href='#' class='tree-menu'>#{link.tag_name}</a>(#{link.path.length})"
+
+      current_level = link.path.length
     end  
+
+    menu += "</li>"
+    menu += ("</ul>" * current_level)
+
+
 
     return menu
 

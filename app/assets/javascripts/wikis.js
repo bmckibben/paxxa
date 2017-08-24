@@ -40,6 +40,15 @@ $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
 	// requires in <i>:
 	// data-toggle='tooltip' data-placement='left' title='title'
+
+
+    $('i.tree-toggler').click(function () {
+        $(this).parent().children('ul.tree').toggle(300);
+        $(this).toggleClass('fa-chevron-right fa-chevron-down')
+    });
+
+    $(".tree").hide()
+
 	
 }) //document.ready
 
