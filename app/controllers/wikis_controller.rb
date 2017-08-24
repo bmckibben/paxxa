@@ -5,6 +5,7 @@ class WikisController < ApplicationController
   # GET /wikis.json
   def index
     @wikis = Wiki.all
+    @menu = nested_set_menu
   end
 
   # GET /wikis/1
@@ -25,7 +26,7 @@ class WikisController < ApplicationController
   # POST /wikis.json
   def create
     @wiki = Wiki.new(wiki_params)
-    @wiki.author = current_user.id
+    @wiki.user_id = current_user.id
     respond_to do |format|
       if @wiki.save
         format.html { redirect_to wikis_url, notice: 'Wiki was successfully created.' }
@@ -75,6 +76,31 @@ class WikisController < ApplicationController
     end 
   end  
 
+  def nested_set_menu
+    nested_set = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, tag_name, path) AS (
+      SELECT id, tag_name, ARRAY[id]
+      FROM wikis
+      WHERE parent IS NULL
+      UNION ALL
+      SELECT wikis.id, wikis.tag_name, path || wikis.id
+      FROM category_tree
+      JOIN wikis ON wikis.parent=category_tree.id
+      WHERE NOT wikis.id = ANY(path)
+      )
+      SELECT * FROM category_tree ORDER BY path")
+
+
+      
+    menu = ""
+
+    nested_set.each do |link|
+      menu += ("--" * (link.path.length-1)) + link.tag_name + "<br/>"
+    end  
+
+    return menu
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki
@@ -83,6 +109,6 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:title, :user_id, :body, :parent, :prev_revision, :deleted)
+      params.require(:wiki).permit(:title, :tag_name, :user_id, :body, :parent, :version, :deleted)
     end
 end
