@@ -12695,8 +12695,28 @@ label {
 }
 
 /* line 130, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
-#nested-menu > a {
-  width: auto;
+.nav > li > a.tree-menu {
+  display: inline;
+}
+
+/* line 134, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.tooltip.top .tooltip-arrow {
+  border-top-color: #337ab7;
+}
+
+/* line 138, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.tooltip.bottom .tooltip-arrow {
+  border-top-color: #337ab7;
+}
+
+/* line 142, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.tooltip.right .tooltip-arrow {
+  border-top-color: #337ab7;
+}
+
+/* line 146, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.tooltip.left .tooltip-arrow {
+  border-top-color: #337ab7;
 }
 
 /* line 1, /media/sf_apps/paxxa/app/assets/stylesheets/layout.scss */
@@ -13342,4 +13362,9 @@ body,
 .sidebar-actions {
   cursor: pointer;
   font-size: 2rem;
+}
+
+/* line 73, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+ul.tree {
+  margin-left: 2rem;
 }

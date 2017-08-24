@@ -108,7 +108,7 @@ class WikisController < ApplicationController
         first_item = false
       end
 
-      menu += "<li><i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i><a href='#' class='tree-menu'>#{link.tag_name}</a>(#{link.path.length})"
+      menu += "<li><i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i><a href='#' class='tree-menu'>#{link.tag_name}</a>"
 
       current_level = link.path.length
     end  
