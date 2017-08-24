@@ -1,3 +1,64 @@
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 col-sm-12">
+      <h1>Tree Menu Example</h1>
+        <div class="well nested-menu" style="width:100%; padding: 8px 0;">
+
+                <ul class="nav nav-list">
+                    <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 1</a>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#" class="tree-menu">Link</a></li>
+                            <li><a href="#" class="tree-menu">Link</a></li>
+                            <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 1.1</a>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#" class="tree-menu">Link</a></li>
+                                    <li><a href="#" class="tree-menu">Link</a></li>
+                                    <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 1.1.1</a>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#" class="tree-menu">Link</a></li>
+                                            <li><a href="#" class="tree-menu">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 2</a>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#" class="tree-menu">Link</a></li>
+                            <li><a href="#" class="tree-menu">Link</a></li>
+                            <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 2.1</a>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#" class="tree-menu">Link</a></li>
+                                    <li><a href="#" class="tree-menu">Link</a></li>
+                                    <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 2.1.1</a>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#" class="tree-menu">Link</a></li>
+                                            <li><a href="#" class="tree-menu">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 2.2</a>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#" class="tree-menu">Link</a></li>
+                                    <li><a href="#" class="tree-menu">Link</a></li>
+                                    <li><i class="tree-toggler nav-header fa fa-chevron-right" aria-hidden="true"></i><a href="#" class="tree-menu">Header 2.2.1</a>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#" class="tree-menu">Link</a></li>
+                                            <li><a href="#" class="tree-menu">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+        </div>
+    </div>    
+  </div>
   <div class="row">
     <div class="col-md-2">
     &nbsp;
@@ -95,11 +156,19 @@
  
 <script>
 $( document ).ready(function() {
-  $('.well').hide();
+//  $('.well').hide();
 
-  $("#mdlNarrative").on('hidden.bs.modal', function () {
-    $(this).data('bs.modal', null);
-  });
-  
+//  $("#mdlNarrative").on('hidden.bs.modal', function () {
+//    $(this).data('bs.modal', null);
+//  });
+
+    $('i.tree-toggler').click(function () {
+        $(this).parent().children('ul.tree').toggle(300);
+        $(this).toggleClass('fa-chevron-right fa-chevron-down')
+    });
+
+    $(".tree").hide()
+
 });
 </script>
+

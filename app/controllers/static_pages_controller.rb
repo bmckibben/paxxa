@@ -16,5 +16,11 @@ class StaticPagesController < ApplicationController
 
   def summary
   end   
-   
+
+  def startrek
+  end 
+
+  def meditation
+  end 
+
 end

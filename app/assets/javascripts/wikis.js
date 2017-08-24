@@ -99,4 +99,41 @@ function bindActionIcons(divID) {
 			};
 		}		
 	});	
+
+	//submit handler
+   $('.wiki-form').submit(function(e) {
+        e.preventDefault();
+     }).validate({
+
+        submitHandler: function(form){
+
+        thisID = $(form.wiki_id).val();
+
+        postURL = "wikis"
+        if (thisID!=0)
+        	postURL += "/"+thisID
+
+        $.ajax(
+            {   url: postURL, 
+                method: "post",
+                data: { },  //just pass the wiki form array
+                error: function() {
+                    alert("Unable to save this form.");
+                },
+                success: function() {
+                   getDisplay(thisID)
+                }  
+            }
+        );
+
+        return false;
+
+        }
+    });
+
+};
+
+// get the html to display wiki in div
+function getDisplay(id) {
+	//if new update div id with record id
 }

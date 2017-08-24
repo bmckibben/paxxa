@@ -9,14 +9,7 @@
 <div class="row" id="row-main">
 
   <div class="col-md-10" id="content">
-
-    <% @wikis.each do |wiki| %>
-
-        <div class="panel panel-default wiki-panel" id="<%= wiki.id %>" >
-          <%= render "display", :wiki => wiki %>  
-        </div>
-
-    <% end %>
+    <%= render "list" %> 
   </div>
 
   <div class="col-md-2" id="sidebar">

@@ -1,6 +1,6 @@
 class ChangeWikiAddTagName < ActiveRecord::Migration
-  def changewikis
-     change_table :recipes do |t|
+  def change
+     change_table :wikis do |t|
       t.string :tag_name
     end 	
   end

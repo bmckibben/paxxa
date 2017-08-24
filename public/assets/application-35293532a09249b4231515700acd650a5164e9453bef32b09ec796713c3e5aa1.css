@@ -12679,6 +12679,26 @@ label {
   color: #666;
 }
 
+/* line 118, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.panel {
+  border-radius: 8px;
+}
+
+/* line 122, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.tooltip-arrow > .tooltip-inner {
+  color: #337ab7;
+}
+
+/* line 126, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.tooltip > .tooltip-inner {
+  background-color: #337ab7;
+}
+
+/* line 130, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+#nested-menu > a {
+  width: auto;
+}
+
 /* line 1, /media/sf_apps/paxxa/app/assets/stylesheets/layout.scss */
 html, body {
   height: 100%;
@@ -13167,6 +13187,8 @@ body,
   color: #337ab7;
   font-size: 2rem;
   cursor: pointer;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 /* line 1, /media/sf_apps/paxxa/app/assets/stylesheets/static_pages.scss */
@@ -13246,7 +13268,7 @@ body,
 
 /* line 9, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .wiki-attributes {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #000;
 }
 
