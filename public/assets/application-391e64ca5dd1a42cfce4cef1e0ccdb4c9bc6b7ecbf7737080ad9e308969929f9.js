@@ -14054,21 +14054,20 @@ function bindActionIcons(divID) {
 
         thisID = $(form.wiki_id).val();
 
-        postURL = "wikis"
-        if (thisID!=0)
-        	postURL += "/"+thisID
+        var valuesToSubmit = $(this).serialize();
 
-        $.ajax(
-            {   url: postURL, 
-                method: "post",
-                data: { },  //just pass the wiki form array
+	    $.ajax({
+	        type: "POST",
+	        url: $(this).attr('action'), //sumbits it to the given url of the form
+	        data: valuesToSubmit,
+	        dataType: "JSON", // you want a difference between normal and ajax-calls, and json is standard
                 error: function() {
                     alert("Unable to save this form.");
                 },
                 success: function() {
-                   getDisplay(thisID)
-                }  
-            }
+                   getDisplay(thisID);
+                };
+            };
         );
 
         return false;

@@ -98,7 +98,17 @@ function checkExisting(){
 	return false;
 };
 
-function bindActionIcons(divID) {
+
+// get the html to display wiki in div
+function getDisplay(id) {
+	//if new update div id with record id
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function bindClickHandlers(table) {
+
 	$("#wiki-cancel").on("click", function() {
 		if(confirm("Are you sure you want to close this without saving?")){
 			if (divID==0){
@@ -107,30 +117,33 @@ function bindActionIcons(divID) {
 				// replace with display
 			};
 		}		
-	});	
+	})
 
-	//submit handler
-   $('.wiki-form').submit(function(e) {
+    // note form submit handler
+    $('.wiki-form').submit(function(e) {
         e.preventDefault();
      }).validate({
 
         submitHandler: function(form){
 
-        thisID = $(form.wiki_id).val();
+        thisID = $(form.worklist_id).val();
 
-        postURL = "wikis"
-        if (thisID!=0)
-        	postURL += "/"+thisID
-
+        //paths differ between dev and production, prod is /lost_resolutions/update_resolution
         $.ajax(
-            {   url: postURL, 
-                method: "post",
-                data: { },  //just pass the wiki form array
+            {   
+
+        type: "POST",
+        url: $(this).attr('action'), //sumbits it to the given url of the form
+        data: valuesToSubmit,
+        dataType: "JSON", // you want a difference between normal and ajax-calls, and json is standard
+    
+
                 error: function() {
                     alert("Unable to save this form.");
                 },
                 success: function() {
-                   getDisplay(thisID)
+                   isLoading=closeNote(row); 
+                   isLoading=0;
                 }  
             }
         );
@@ -138,11 +151,5 @@ function bindActionIcons(divID) {
         return false;
 
         }
-    });
-
+    }); 
 };
-
-// get the html to display wiki in div
-function getDisplay(id) {
-	//if new update div id with record id
-}
