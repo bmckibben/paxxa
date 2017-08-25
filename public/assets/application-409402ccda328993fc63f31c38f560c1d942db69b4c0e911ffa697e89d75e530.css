@@ -12719,6 +12719,17 @@ label {
   border-top-color: #337ab7;
 }
 
+/* line 150, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.btn-transparent {
+  border: none;
+  background-color: transparent;
+  height: 2rem;
+  width: 3rem;
+  padding: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 /* line 1, /var/www/paxxa/app/assets/stylesheets/layout.scss */
 html, body {
   height: 100%;
@@ -13367,4 +13378,29 @@ body,
 /* line 73, /var/www/paxxa/app/assets/stylesheets/wikis.scss */
 ul.tree {
   margin-left: 2rem;
+}
+
+/* line 77, /var/www/paxxa/app/assets/stylesheets/wikis.scss */
+.nav-tabs > li > a {
+  font-size: 1rem;
+  line-height: 1;
+  background-color: #bbb;
+  border-radius: 6px 6px 0 0;
+}
+
+/* line 85, /var/www/paxxa/app/assets/stylesheets/wikis.scss */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: #ddd;
+  border-color: #bbb #bbb transparent;
+  cursor: pointer;
+}
+
+/* line 91, /var/www/paxxa/app/assets/stylesheets/wikis.scss */
+.tree-toggler {
+  cursor: pointer;
+}
+
+/* line 95, /var/www/paxxa/app/assets/stylesheets/wikis.scss */
+#sidebarTabs {
+  margin-top: 10px;
 }
