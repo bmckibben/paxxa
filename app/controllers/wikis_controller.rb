@@ -26,7 +26,7 @@ class WikisController < ApplicationController
   # POST /wikis.json
   def create
     @wiki = Wiki.new(wiki_params)
-    @wiki.user_id = current_user.id
+    @wiki.author = current_user.id
     respond_to do |format|
       if @wiki.save
         format.html { redirect_to wikis_url, notice: 'Wiki was successfully created.' }
@@ -93,7 +93,7 @@ class WikisController < ApplicationController
     first_item = true
       
     menu = "<ul class='nav nav-list'>"
-
+    tree_toggler = "<i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i>"
 
 
     nested_set.each do |link|
@@ -101,14 +101,17 @@ class WikisController < ApplicationController
       if current_level < link.path.length
         menu += " <ul class='nav nav-list tree'>"
       elsif current_level > link.path.length
-        menu += "</li></ul>"
+        menu += "</li></ul>" * (current_level-link.path.length)
+        
       elsif !first_item  
         menu += "</li>"
       else  
         first_item = false
       end
 
-      menu += "<li><i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i><a href='#' class='tree-menu'>#{link.tag_name}</a>"
+      
+
+      menu += "<li>#{tree_toggler}<a href='#' class='tree-menu'>#{link.tag_name}</a>"
 
       current_level = link.path.length
     end  

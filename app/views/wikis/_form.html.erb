@@ -22,7 +22,7 @@
                  <%= f.label :parent %><%= f.text_field :parent %>
                 </div>
                 <div class="col-md-6 wiki-actions right">
-                  <%= f.submit do %><i aria-hidden="false" class="fa fa-check-square-o"></i><% end %>
+                  <button name="commit" type="submit" class="btn-transparent"><i aria-hidden="false" class="fa fa-check-square-o action-icon"></i></button>
                   <%= link_to wikis_path do %><i aria-hidden="false" class="fa fa-window-close-o"></i><% end %>
                 </div>  
             </div>

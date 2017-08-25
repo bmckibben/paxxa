@@ -147,3 +147,12 @@ label {
     border-top-color: #337ab7;
 }
 
+.btn-transparent {
+  border:none;
+  background-color: transparent;
+  height:2rem;
+  width:3rem;
+  padding: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

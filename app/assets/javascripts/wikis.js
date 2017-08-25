@@ -19,7 +19,6 @@ $(document).ready(function() {
 
 	$(".wiki-edit").on("click", function() {
 
-		alert("you clicked clicked to edit wiki " + $(this).data("id"));
 		if (checkExisting()) { return };
 		editInPlace(getForm($(this).data("id")),$(this).data("id"));
 		bindActionIcons($(this).data("id"));
@@ -28,7 +27,7 @@ $(document).ready(function() {
 	});	
 
 	$(".wiki-here").on("click", function() {
-		alert("wiki-here");
+
 		if (checkExisting()) { return };
 		insertAfterWiki(getForm(0),$(this).data("id"));
 		bindActionIcons(0);
@@ -76,10 +75,11 @@ function insertAtTop(formHTML){
 
 };	
 
-function insertAfterWiki(formHTML, divID){
+function insertAfterWiki(formHTML, parentID){
 
 	insertHTML = '<div class="panel panel-default wiki-panel" id="0" >'+formHTML+'</div>';
-	$("#"+divID).after(insertHTML);
+	$("#"+parentID).after(insertHTML);
+	$("#wiki_parent").val(parentID);
 
 };
 
@@ -107,12 +107,13 @@ function getDisplay(id) {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function bindClickHandlers(table) {
+// bind click event for the icons on a newly displayed wiki form
+function bindActionIcons(thisID) {
 
 	$("#wiki-cancel").on("click", function() {
 		if(confirm("Are you sure you want to close this without saving?")){
-			if (divID==0){
-				$("#"+divID).remove();
+			if (thisID==0){
+				$("#"+thisID).remove();
 			}else{
 				// replace with display
 			};
@@ -122,8 +123,8 @@ function bindClickHandlers(table) {
     // note form submit handler
     $('.wiki-form').submit(function(e) {
         e.preventDefault();
-     }).validate({
 
+     }).validate({
         submitHandler: function(form){
 
         thisID = $(form.worklist_id).val();

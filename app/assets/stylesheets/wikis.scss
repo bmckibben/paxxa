@@ -73,3 +73,25 @@
 ul.tree {
   margin-left: 2rem;
 }
+
+.nav-tabs > li > a {
+    font-size: 1rem;
+    line-height: 1;
+    background-color: #bbb;  
+    border-radius: 6px 6px 0 0; 
+
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #ddd;
+    border-color: #bbb #bbb transparent;
+    cursor:pointer;
+}
+
+.tree-toggler {
+    cursor:pointer;
+}
+
+#sidebarTabs {
+    margin-top: 10px;
+}
