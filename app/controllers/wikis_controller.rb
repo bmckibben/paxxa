@@ -45,7 +45,7 @@ class WikisController < ApplicationController
     respond_to do |format|
       if @wiki.update(wiki_params)
         format.html { redirect_to wikis_url, notice: 'Wiki was successfully updated.' }
-        format.json { render :show, status: :ok, location: @wiki }
+        format.js { render "wikis/display" }
       else
         format.html { render :edit }
         format.json { render json: @wiki.errors, status: :unprocessable_entity }

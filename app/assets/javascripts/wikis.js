@@ -120,37 +120,37 @@ function bindActionIcons(thisID) {
 		}		
 	})
 
-    // note form submit handler
-    $('.wiki-form').submit(function(e) {
-        e.preventDefault();
+    // // note form submit handler
+    // $('.wiki-form').submit(function(e) {
+    //     e.preventDefault();
 
-     }).validate({
-        submitHandler: function(form){
+    //  }).validate({
+    //     submitHandler: function(form){
 
-        thisID = $(form.worklist_id).val();
+    //     var thisID = $(form.worklist_id).val();
 
-        //paths differ between dev and production, prod is /lost_resolutions/update_resolution
-        $.ajax(
-            {   
+    //     var valuesToSubmit = $('form').serialize();
 
-        type: "POST",
-        url: $(this).attr('action'), //sumbits it to the given url of the form
-        data: valuesToSubmit,
-        dataType: "JSON", // you want a difference between normal and ajax-calls, and json is standard
+    //     $.ajax(
+    //         {   
+
+    //     type: "POST",
+    //     url: $('form').attr('action'), //sumbits it to the given url of the form
+    //     data: valuesToSubmit,
+    //     dataType: "JSON", // you want a difference between normal and ajax-calls, and json is standard
     
+    //             error: function() {
+    //                 alert("Unable to save this form.");
+    //             },
+    //             success: function() {
+    //                isLoading=closeNote(row); 
+    //                isLoading=0;
+    //             }  
+    //         }
+    //     );
 
-                error: function() {
-                    alert("Unable to save this form.");
-                },
-                success: function() {
-                   isLoading=closeNote(row); 
-                   isLoading=0;
-                }  
-            }
-        );
+    //     return false;
 
-        return false;
-
-        }
-    }); 
+    //     }
+    // }); 
 };
