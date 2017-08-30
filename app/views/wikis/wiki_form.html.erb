@@ -16,11 +16,8 @@
                   <p class="wiki-title"><%= f.label :title %><%= f.text_field :title, class: "form-control" %></p>
                 </div>
                 <div class=" col-md-3 wiki-actions right">
-                  <button name="commit" type="submit" class="btn-transparent"><i aria-hidden="false" class="fa fa-check-square-o action-icon" id="wiki-save" data-toggle='tooltip' data-placement='bottom' title='Save changes to this wiki.'></i></button>
-                  <i aria-hidden="false" class="fa fa-window-close-o action-icon" id="wiki-cancel"></i> 
-                  <% if !@wiki.id.nil? %>
-                    <i aria-hidden="false" class="fa fa-trash action-icon" id="wiki-delete" data-toggle='tooltip' data-placement='bottom' title='Close wiki without saving.'></i> 
-                  <% end %>    
+                  <button name="commit" type="submit" class="btn-transparent"  data-toggle='tooltip' data-placement='bottom' title='Save changes to this wiki.'><i aria-hidden="false" class="fa fa-check-square-o action-icon" id="wiki-save"></i></button>
+                  <i aria-hidden="false" class="fa fa-window-close-o action-icon" id="wiki-cancel" data-toggle='tooltip' data-placement='bottom' title='Close wiki without saving.'></i>    
                 </div>
             </div>  
 
@@ -28,9 +25,8 @@
           <div class="panel-body">
             <div class="row border-bottom">
                 <div class="col-md-12 wiki-tags">
-                 <%= f.label "Tags" %><%= @wiki.id %></br>
                  <%= f.label :tag_name %><%= f.text_field :tag_name, class: "form-control" %></br>
-                 <%= f.label :parent %><%= f.text_field :parent, class: "form-control" %></br>
+                 <%= f.hidden_field :parent %></br>
                 </div> 
             </div>
             <div class="row">

@@ -8,33 +8,7 @@ $(document).ready(function() {
 
 	});
 
-	$("#wiki-new").on("click", function() {
-
-		if (checkExisting()) { return };		
-		insertAtTop(getForm(0));
-		bindActionIcons(0);
-		// submit handler
-		//if save is successful replace content with new _display, update div id
-	});
-
-	$(".wiki-edit").on("click", function() {
-
-		if (checkExisting()) { return };
-		editInPlace(getForm($(this).data("id")),$(this).data("id"));
-		bindActionIcons($(this).data("id"));
-		// submit handler 
-		//if save is successful replace content with new _display, update div id
-	});	
-
-	$(".wiki-here").on("click", function() {
-
-		if (checkExisting()) { return };
-		insertAfterWiki(getForm(0),$(this).data("id"));
-		bindActionIcons(0);
-		// submit handler
-		//if save is successful replace content with new _display, update div id
-	});
-
+	bindDisplayActionIcons()
 
 	$('[data-toggle="tooltip"]').tooltip();
 	// requires in <i>:
@@ -108,49 +82,63 @@ function getDisplay(id) {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // bind click event for the icons on a newly displayed wiki form
-function bindActionIcons(thisID) {
+function bindEditActionIcons(thisID) {
 
 	$("#wiki-cancel").on("click", function() {
 		if(confirm("Are you sure you want to close this without saving?")){
 			if (thisID==0){
 				$("#"+thisID).remove();
 			}else{
-				// replace with display
+				reDisplayWiki(thisID);
 			};
 		}		
 	})
 
-    // // note form submit handler
-    // $('.wiki-form').submit(function(e) {
-    //     e.preventDefault();
-
-    //  }).validate({
-    //     submitHandler: function(form){
-
-    //     var thisID = $(form.worklist_id).val();
-
-    //     var valuesToSubmit = $('form').serialize();
-
-    //     $.ajax(
-    //         {   
-
-    //     type: "POST",
-    //     url: $('form').attr('action'), //sumbits it to the given url of the form
-    //     data: valuesToSubmit,
-    //     dataType: "JSON", // you want a difference between normal and ajax-calls, and json is standard
-    
-    //             error: function() {
-    //                 alert("Unable to save this form.");
-    //             },
-    //             success: function() {
-    //                isLoading=closeNote(row); 
-    //                isLoading=0;
-    //             }  
-    //         }
-    //     );
-
-    //     return false;
-
-    //     }
-    // }); 
 };
+
+function bindDisplayActionIcons() {
+	$("#wiki-new").on("click", function() {
+
+		if (checkExisting()) { return };		
+		insertAtTop(getForm(0));
+		bindEditActionIcons(0);
+
+	});
+
+	$(".wiki-edit").on("click", function() {
+
+		if (checkExisting()) { return };
+		editInPlace(getForm($(this).data("id")),$(this).data("id"));
+		bindEditActionIcons($(this).data("id"));
+
+	});	
+
+	$(".wiki-here").on("click", function() {
+
+		if (checkExisting()) { return };
+		insertAfterWiki(getForm(0),$(this).data("id"));
+		bindEditActionIcons(0);
+
+	});
+
+	$('[data-toggle="tooltip"]').tooltip();
+
+}	
+
+function reDisplayWiki(id){
+    
+  $.ajax(
+    {   url: "/wikis/re_display", 
+        method: "get",
+        data: {"wiki_id": id }, 
+        dataType: "html" ,
+        async: false
+    })
+    .done(function(data){insertHTML = data})
+    .fail(function(){ alert("Failed to retreive wiki.")});
+
+	$("#"+id).html(insertHTML);
+	bindDisplayActionIcons()
+	$('[data-toggle="tooltip"]').tooltip();
+
+}; //reDisplay

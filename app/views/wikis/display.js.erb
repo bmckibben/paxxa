@@ -1,2 +1,5 @@
 alert(<%=@wiki.id%>);
-$("#<%=@wiki.id%>").html('<%= j render "wikis/refresh_display" %>')
+alert(<%=@wiki_id%>);
+$("#<%=@wiki_id%>").html('<%= j render "wikis/refresh_display" %>');
+$("#<%=@wiki_id%>").attr('id','<%= @wiki.id %>');
+bindDisplayActionIcons();

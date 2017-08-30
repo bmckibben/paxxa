@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'static_pages/title', :as => 'static_title'
   get 'static_pages/summary', :as => 'static_summary'
   get 'wikis/wiki_form' => 'wikis#wiki_form'
+  get 'wikis/re_display' => 'wikis#re_display'
 
   resources :wikis
 

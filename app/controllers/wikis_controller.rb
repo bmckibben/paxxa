@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.all.order(updated_at: :desc)
     @menu = nested_set_menu
   end
 
@@ -26,11 +26,12 @@ class WikisController < ApplicationController
   # POST /wikis.json
   def create
     @wiki = Wiki.new(wiki_params)
-    @wiki.author = current_user.id
+    @wiki.user_id = current_user.id
+    @wiki_id = 0
     respond_to do |format|
       if @wiki.save
         format.html { redirect_to wikis_url, notice: 'Wiki was successfully created.' }
-        format.json { render :show, status: :ok, location: @wiki }
+        format.js { render "wikis/display" }
       else
         format.html { render :new }
         format.json { render json: @wiki.errors, status: :unprocessable_entity }
@@ -42,6 +43,7 @@ class WikisController < ApplicationController
   # PATCH/PUT /wikis/1.json
   def update
 
+    @wiki_id = @wiki.id
     respond_to do |format|
       if @wiki.update(wiki_params)
         format.html { redirect_to wikis_url, notice: 'Wiki was successfully updated.' }
@@ -75,6 +77,15 @@ class WikisController < ApplicationController
       format.json { render nothing: true }
     end 
   end  
+
+  def re_display
+    @wiki = Wiki.find(params[:wiki_id])
+
+    respond_to do |format|
+      format.html { render layout: false}
+      format.json { render nothing: true }
+    end 
+  end 
 
   def nested_set_menu
     nested_set = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, tag_name, path) AS (

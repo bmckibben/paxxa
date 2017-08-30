@@ -157,3 +157,9 @@ label {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+
+
+.alert-dismissable .close, .alert-dismissible .close {
+    top: -16px;
+    right: -16px;
+}
