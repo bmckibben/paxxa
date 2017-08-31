@@ -12598,30 +12598,31 @@ th {
 .alert {
   margin: 1em;
   padding: 1em;
+  max-width: 400px;
 }
 
-/* line 50, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 51, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .alert-danger, #error_explanation, .alert-error, .alert-success {
   border: none;
 }
 
-/* line 55, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 56, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .close {
   color: #000;
 }
 
-/* line 59, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 60, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .border-right {
   border-right: 1px solid #fff;
 }
 
-/* line 63, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 64, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .well {
   background-color: transparent;
   border: none;
 }
 
-/* line 68, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 69, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .btn {
   margin: 0.5em;
   font-family: Verdana, Geneva, sans-serif;
@@ -12638,88 +12639,88 @@ th {
   margin-top: 0;
 }
 
-/* line 85, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 86, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 label {
   color: #000;
 }
 
-/* line 89, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 90, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child) {
   border-radius: 4;
 }
 
-/* line 93, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 94, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child) {
   border-radius: 4;
 }
 
-/* line 97, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 98, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .main-margined {
   margin: 10px;
 }
 
-/* line 101, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 102, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .input-group {
   width: 100%;
 }
 
 @media (max-width: 400px) {
-  /* line 106, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+  /* line 107, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
   .navbar-brand img {
     margin-top: 10px;
   }
 
-  /* line 109, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+  /* line 110, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
   .dropdown-menu > li > a {
     color: #66ccff;
   }
 }
-/* line 114, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 115, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 #new_user label {
   color: #666;
 }
 
-/* line 118, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 119, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .panel {
   border-radius: 8px;
 }
 
-/* line 122, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 123, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .tooltip-arrow > .tooltip-inner {
   color: #337ab7;
 }
 
-/* line 126, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 127, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .tooltip > .tooltip-inner {
   background-color: #337ab7;
 }
 
-/* line 130, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 131, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .nav > li > a.tree-menu {
   display: inline;
 }
 
-/* line 134, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 135, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .tooltip.top .tooltip-arrow {
   border-top-color: #337ab7;
 }
 
-/* line 138, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 139, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .tooltip.bottom .tooltip-arrow {
   border-top-color: #337ab7;
 }
 
-/* line 142, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 143, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .tooltip.right .tooltip-arrow {
   border-top-color: #337ab7;
 }
 
-/* line 146, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 147, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .tooltip.left .tooltip-arrow {
   border-top-color: #337ab7;
 }
 
-/* line 150, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+/* line 151, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
 .btn-transparent {
   border: none;
   background-color: transparent;
@@ -12728,6 +12729,12 @@ label {
   padding: 0;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+/* line 162, /var/www/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.alert-dismissable .close, .alert-dismissible .close {
+  top: -16px;
+  right: -16px;
 }
 
 /* line 1, /var/www/paxxa/app/assets/stylesheets/layout.scss */
