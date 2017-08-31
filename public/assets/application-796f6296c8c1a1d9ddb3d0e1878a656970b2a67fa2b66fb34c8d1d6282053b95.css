@@ -12737,6 +12737,13 @@ label {
   right: -16px;
 }
 
+/* line 167, /media/sf_apps/paxxa/app/assets/stylesheets/bootstrap_overrides.scss */
+.nav > li > a {
+  font-family: verdana,serif;
+  font-weight: bold;
+  padding: 10px 8px;
+}
+
 /* line 1, /media/sf_apps/paxxa/app/assets/stylesheets/layout.scss */
 html, body {
   height: 100%;
@@ -13312,8 +13319,8 @@ body,
 
 /* line 14, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .wiki-panel {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  /*	padding-left: 1rem;
+  	padding-right: 1rem;*/
   margin-right: 1rem;
   margin-left: 4rem;
 }
