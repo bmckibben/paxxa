@@ -122,6 +122,10 @@ function bindDisplayActionIcons() {
 
 	});
 
+  $(".btn-tag").click(function() {
+    alert("I will open "+$(this).data("tag-id")+" under "+$(this).data("this-id"));
+  });
+
 	$('[data-toggle="tooltip"]').tooltip();
 
 }	

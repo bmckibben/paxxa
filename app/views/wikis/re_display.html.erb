@@ -2,7 +2,7 @@
             <div class="row">
                 <div class="col-md-9 wiki-tags">
                   <p class="wiki-title"><%= @wiki.title %></p>
-                  <p>[<%= @wiki.id %>] <%= @wiki.tag_name %></p>
+                  <p><a href="javascript:void(0)" data-tag-id="5" data-this-id="<%= @wiki.id %>" class="btn btn-tag">tag for 5</a></p>
                 </div>
                 <div class=" col-md-3 wiki-actions right">
                   <i aria-hidden="false" class="fa fa-plus action-icon wiki-here" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Create a child wiki.'></i>

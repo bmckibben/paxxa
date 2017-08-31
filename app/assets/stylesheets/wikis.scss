@@ -145,3 +145,30 @@ ul.tree {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.btn-tag {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f900+0,dcdc00+50,d2d200+54,dede00+100 */
+    background: #f9f900; /* Old browsers */
+    background: -moz-linear-gradient(top, #f9f900 0%, #dcdc00 50%, #d2d200 54%, #dede00 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #f9f900 0%,#dcdc00 50%,#d2d200 54%,#dede00 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #f9f900 0%,#dcdc00 50%,#d2d200 54%,#dede00 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f900', endColorstr='#dede00',GradientType=0 ); /* IE6-9 */
+    border-radius: 1em !important;
+    color: #000;
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.2em;
+    padding: 0.16em 0.7em;
+    vertical-align: baseline;
+    white-space: nowrap;    
+}
+
+.btn-tag:hover {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dede00+0,d2d200+46,dcdc00+50,f9f900+100 */
+    background: #dede00; /* Old browsers */
+    background: -moz-linear-gradient(top, #dede00 0%, #d2d200 46%, #dcdc00 50%, #f9f900 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #dede00 0%,#d2d200 46%,#dcdc00 50%,#f9f900 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #dede00 0%,#d2d200 46%,#dcdc00 50%,#f9f900 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dede00', endColorstr='#f9f900',GradientType=0 ); /* IE6-9 */
+}
