@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'static_pages/startrek', :as => 'static_startrek'
   get 'static_pages/title', :as => 'static_title'
   get 'static_pages/summary', :as => 'static_summary'
+  get 'static_pages/novels', :as => 'static_novels'
+  get 'static_pages/moderation', :as => 'static_moderation'
+  get 'static_pages/sisyphus', :as => 'static_sisyphus'
   get 'wikis/wiki_form' => 'wikis#wiki_form'
   get 'wikis/re_display' => 'wikis#re_display'
 

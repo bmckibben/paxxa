@@ -12984,7 +12984,7 @@ body,
   height: 90%;
   max-width: 250px;
   color: #999;
-  background: url("/star.png") no-repeat center;
+  background: url("/assets/star-6fbdebf4617547284ad95c962a06b2cbf5feb39567b1871ad696d35358b7d9a8.png") no-repeat center;
   background-size: 100% 100%;
 }
 
@@ -13304,6 +13304,13 @@ body,
   margin: 0;
   outline: 0;
   padding: 0;
+}
+
+/* line 62, /media/sf_apps/paxxa/app/assets/stylesheets/static_pages.scss */
+.float_box {
+  position: fixed;
+  top: 100px;
+  height: auto;
 }
 
 /* line 5, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */

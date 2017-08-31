@@ -23,4 +23,13 @@ class StaticPagesController < ApplicationController
   def meditation
   end 
 
+  def novels
+  end 
+
+  def moderation
+  end 
+
+  def sisphus
+  end 
+
 end
