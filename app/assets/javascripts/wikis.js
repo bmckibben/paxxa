@@ -1,12 +1,13 @@
 $(document).ready(function() {
 
-	$(".sidebar-toggle").click(function() {
+  $(".sidebar-toggle").click(function() {
+    // alert("You clicked me!")
 
-		$("#sidebar").toggleClass("collapsed");
-		$("#content").toggleClass("col-md-12 col-md-10");
-		$(".sidebar-toggle").toggleClass("fa-chevron-right fa-chevron-left");
+    $("#mySidenav").toggleClass("sidenav-collapsed sidenav-open");
+    $("#main").toggleClass("main-open main-collapsed");
+    $(".sidebar-toggle").toggleClass("fa-chevron-right fa-chevron-left");
 
-	});
+  });
 
 	bindDisplayActionIcons()
 

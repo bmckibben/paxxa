@@ -8,12 +8,15 @@
 </div>
 <div class="row" id="row-main">
 
-  <div class="col-md-10" id="content">
-    <%= render "list" %> 
-  </div>
+<div id="mySidenav" class="sidenav sidenav-open">
+  <%= render "sidebar" %> 
+</div>
 
-  <div class="col-md-2" id="sidebar">
-    <%= render "sidebar" %> 
-  </div>
+<div id="main" class="main-collapsed">
+
+<%= render "list" %>
+
+ </div>    
 
 </div>
+</div>>

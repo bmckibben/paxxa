@@ -77,7 +77,8 @@ ul.tree {
 .nav-tabs > li > a {
     font-size: 1rem;
     line-height: 1;
-    background-color: #bbb;  
+    background-color: #bbb;
+    color: #555;  
     border-radius: 6px 6px 0 0; 
 
 }
@@ -94,4 +95,53 @@ ul.tree {
 
 #sidebarTabs {
     margin-top: 10px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 110px;
+    right: 0;
+    background-color: transparent;
+    overflow-x: hidden;
+    transition: 0.5s;
+    
+}
+
+.sidenav a {
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav-collapsed {
+  width:0;
+  padding-right: 0;
+}
+
+.sidenav-open {
+  width:300px;
+  padding-right: 2rem;
+}
+
+.main-open  {
+    margin-right: 0;
+}
+
+.main-collapsed {
+    margin-right:300px;
+}
+
+#main {
+    transition: margin-right .5s;
+    padding-right: 2rem;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
