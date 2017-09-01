@@ -161,7 +161,8 @@ ul.tree {
     line-height: 1.2em;
     padding: 0.16em 0.7em;
     vertical-align: baseline;
-    white-space: nowrap;    
+    white-space: nowrap; 
+    margin:0;   
 }
 
 .btn-tag:hover {
@@ -171,4 +172,25 @@ ul.tree {
     background: -webkit-linear-gradient(top, #dede00 0%,#d2d200 46%,#dcdc00 50%,#f9f900 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #dede00 0%,#d2d200 46%,#dcdc00 50%,#f9f900 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dede00', endColorstr='#f9f900',GradientType=0 ); /* IE6-9 */
+}
+
+.wiki-tags {
+    margin-bottom:0;
+    line-height: 1rem;
+}
+
+/*.nav > li > a:link {
+  color: #337ab7;
+}*/
+
+.nav > li > a {
+  color: #337ab7;
+}
+
+.nav > li > a:hover {
+  color: #66ccff;
+}
+
+.tree-menu {
+  color: #337ab7;
 }

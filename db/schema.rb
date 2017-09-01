@@ -55,12 +55,4 @@ ActiveRecord::Schema.define(version: 20170901144737) do
     t.integer  "last_revision"
   end
 
-  create_table "wikis_tags", id: false, force: :cascade do |t|
-    t.integer "wiki_id"
-    t.integer "tag_id"
-  end
-
-  add_index "wikis_tags", ["tag_id"], name: "index_wikis_tags_on_tag_id", using: :btree
-  add_index "wikis_tags", ["wiki_id"], name: "index_wikis_tags_on_wiki_id", using: :btree
-
 end

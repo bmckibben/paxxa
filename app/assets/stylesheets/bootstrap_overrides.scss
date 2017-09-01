@@ -169,3 +169,7 @@ label {
   font-weight: bold;
   padding: 10px 8px;
 }
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
+}

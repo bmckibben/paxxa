@@ -50,13 +50,20 @@ function insertAtTop(formHTML){
 
 };	
 
-function insertAfterWiki(formHTML, parentID){
+function insertAfterWiki(wikiHTML, parentID, newID){
 
-	insertHTML = '<div class="panel panel-default wiki-panel" id="0" >'+formHTML+'</div>';
+	insertHTML = '<div class="panel panel-default wiki-panel" id="'+newID+'" >'+wikiHTML+'</div>';
 	$("#"+parentID).after(insertHTML);
 	$("#wiki_parent").val(parentID);
 
 };
+
+// function showAfterWiki(wikiID, openerID){
+
+// 	$("#"+openerID).after(getWiki(wikiID));
+// 	bindDisplayActionIcons()	
+
+// };
 
 function editInPlace(formHTML, divID){
 
@@ -67,7 +74,7 @@ function editInPlace(formHTML, divID){
 
 function checkExisting(){
 	if ($("#0").length != 0) {
-		alert("You must save or cancel any new wiki before you can crate a new one.");
+		alert("You must save or cancel any new wiki before you can create a new one.");
 		return true;
 	};
 	return false;
@@ -117,21 +124,43 @@ function bindDisplayActionIcons() {
 	$(".wiki-here").on("click", function() {
 
 		if (checkExisting()) { return };
-		insertAfterWiki(getForm(0),$(this).data("id"));
+		insertAfterWiki(getForm(0),$(this).data("id"),"0");
 		bindEditActionIcons(0);
 
 	});
 
-  $(".btn-tag").click(function() {
-    alert("I will open "+$(this).data("tag-id")+" under "+$(this).data("this-id"));
-  });
+	$(".btn-tag").click(function() {
+
+		var tagWiki = $(this).data("tag-id");
+		var thisWiki = $(this).data("this-id");
+
+		if ($("#"+tagWiki).length != 0) {
+			$('html,body').animate({ scrollTop: $("#"+tagWiki).offset().top-70});
+		} else {
+			insertAfterWiki(getWiki(tagWiki),thisWiki,tagWiki);
+		};	
+	});
+
+	$("#wiki-delete").on("click", function() {
+		if(confirm("Are you sure you want to delete this wiki?")){
+			$("#"+$(this).data("id")).remove();
+			// just remove for now, eventually move to archive
+		}		
+	});
 
 	$('[data-toggle="tooltip"]').tooltip();
 
 }	
 
 function reDisplayWiki(id){
-    
+
+	var wiki = getWiki(id);
+	$("#"+id).html(wiki);
+	bindDisplayActionIcons();
+
+}; //reDisplay
+
+function getWiki(id){
   $.ajax(
     {   url: "/wikis/re_display", 
         method: "get",
@@ -139,11 +168,8 @@ function reDisplayWiki(id){
         dataType: "html" ,
         async: false
     })
-    .done(function(data){insertHTML = data})
-    .fail(function(){ alert("Failed to retreive wiki.")});
+    .done(function(data){wikiHTML = data})
+    .fail(function(){ alert("Failed to retreive wiki.")});	
 
-	$("#"+id).html(insertHTML);
-	bindDisplayActionIcons()
-	$('[data-toggle="tooltip"]').tooltip();
-
-}; //reDisplay
+    return wikiHTML
+};

@@ -31,9 +31,11 @@
             </div>
           </div>            
           <div class="panel-footer">  
-            <div class="row wiki-attributes">
+            <div class="row">
+              <div class="col-md-12 wiki-attributes">
               Author: <%= current_user.login %> |
               Created:  <%= Time.now.strftime("%Y-%m-%d %R") %>
+              </div>
             </div>
           </div>
 <% end %>          

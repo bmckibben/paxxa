@@ -1,7 +1,31 @@
+<div class="row">
+  <div class="col-md-1">
+  &nbsp;
+  </div>  
+  <div class="col-md-10  white-scroller" >
 
-<% @wikis.wiki_tags.each do |wiki_tag| %>
 
-  wiki: <%= wiki_tag.wiki_id %>  tag: <%= wiki_tag.tag_id %> title: <%= wiki_tag.tag.title if !wiki_tag.tag.nil?  %><br/>
+<h1>Tags</h1>
 
+<table class="responsive-table" style="margin:auto;width:100%;">
+  <thead>
+    <tr>
+      <th>Wiki ID</th>
+      <th>Tag ID</th>
+      <th>Tag Title</th>
+    </tr>
+  </thead>
 
-<% end %>
+  <tbody>
+    <% @wikis.each do |wiki_tag| %>
+      <tr>
+        <td><%= wiki_tag.wiki_id %></td>
+        <td><%= wiki_tag.tag_id %></td>
+        <td><%= wiki_tag.tag.title if !wiki_tag.tag.nil?  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>  
+
+</div>
+</div>

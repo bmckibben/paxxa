@@ -10,17 +10,17 @@
 </div>        
 
 <ul class="nav nav-tabs" id="sidebarTabs">
-  <li class="active"><a data-target="#menu" data-toggle="tab">Menu</a></li>
-  <li><a data-target="#recent" data-toggle="tab">Recent</a></li>
-  <li><a data-target="#tags" data-toggle="tab">Tags</a></li>
+  <li><a data-target="#open" data-toggle="tab">Open</a></li>
+  <li class="active"><a data-target="#menu" data-toggle="tab">Menu</a></li>  
+  <li><a data-target="#recent" data-toggle="tab">Recent</a></li>  
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="menu">
   	<div class="well nested-menu" style="width:100%; padding: 8px 0;"><%= @menu.html_safe %></div>
   </div>
-  <div class="tab-pane" id="recent">A list of wikis updated since</div>
-  <div class="tab-pane" id="messages">A linked list of tags</div>
+  <div class="tab-pane" id="recent">A list of wikis catorgized by last updated</div>
+  <div class="tab-pane" id="open">A list of wikis currently displayed</div>
 </div>
 
 

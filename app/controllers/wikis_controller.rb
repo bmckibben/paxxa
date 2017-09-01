@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.all.order(updated_at: :desc)
+    @wikis = Wiki.where(parent: nil).order(updated_at: :desc)
     @menu = nested_set_menu
   end
 
@@ -23,7 +23,7 @@ class WikisController < ApplicationController
   end
 
   def test
-     @wikis = Wiki.find("1")
+     @wikis = WikiTag.all
   end
 
   # POST /wikis
