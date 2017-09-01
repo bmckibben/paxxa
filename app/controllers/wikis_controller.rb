@@ -22,6 +22,10 @@ class WikisController < ApplicationController
   def edit
   end
 
+  def test
+     @wikis = Wiki.find("1")
+  end
+
   # POST /wikis
   # POST /wikis.json
   def create
@@ -88,12 +92,12 @@ class WikisController < ApplicationController
   end 
 
   def nested_set_menu
-    nested_set = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, tag_name, path) AS (
-      SELECT id, tag_name, ARRAY[id]
+    nested_set = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, title, path) AS (
+      SELECT id, title, ARRAY[id]
       FROM wikis
       WHERE parent IS NULL
       UNION ALL
-      SELECT wikis.id, wikis.tag_name, path || wikis.id
+      SELECT wikis.id, wikis.title, path || wikis.id
       FROM category_tree
       JOIN wikis ON wikis.parent=category_tree.id
       WHERE NOT wikis.id = ANY(path)
@@ -122,7 +126,7 @@ class WikisController < ApplicationController
 
       
 
-      menu += "<li>#{tree_toggler}<a href='#' class='tree-menu'>#{link.tag_name}</a>"
+      menu += "<li>#{tree_toggler}<a href='#' class='tree-menu'>#{link.title}</a>"
 
       current_level = link.path.length
     end  
@@ -144,6 +148,6 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:title, :tag_name, :user_id, :body, :parent, :version, :deleted)
+      params.require(:wiki).permit(:title, :user_id, :body, :parent, :version, :deleted)
     end
 end

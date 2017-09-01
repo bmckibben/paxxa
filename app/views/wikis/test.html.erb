@@ -1,0 +1,7 @@
+
+<% @wikis.wiki_tags.each do |wiki_tag| %>
+
+  wiki: <%= wiki_tag.wiki_id %>  tag: <%= wiki_tag.tag_id %> title: <%= wiki_tag.tag.title if !wiki_tag.tag.nil?  %><br/>
+
+
+<% end %>

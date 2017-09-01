@@ -1,0 +1,2 @@
+module WikiTagsHelper
+end

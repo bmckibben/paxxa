@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :wiki_tags
   resources :admins
   devise_for :users
   root 'home#index'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get 'static_pages/sisyphus', :as => 'static_sisyphus'
   get 'wikis/wiki_form' => 'wikis#wiki_form'
   get 'wikis/re_display' => 'wikis#re_display'
+  get 'wikis/test' => 'wikis#test'
 
   resources :wikis
 
