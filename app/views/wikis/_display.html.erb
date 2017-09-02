@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-12 wiki-attributes">
               Author: <%= wiki.user.login if !wiki.user.nil? %> (version: <%= wiki.version %> <%= "deleted" if wiki.deleted? %>) |
-              Created:  <%= wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= wiki.updated_at.strftime("%Y-%m-%d %R") %> 
+              Created:  <%= wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= wiki.updated_at.strftime("%Y-%m-%d %R") %> <br/>_display
             </div>
             </div>
           </div>

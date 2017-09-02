@@ -36,23 +36,23 @@ ActiveRecord::Schema.define(version: 20170901144737) do
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "wiki_tags", force: :cascade do |t|
-    t.integer  "wiki_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "wiki_tags", id: false, force: :cascade do |t|
+    t.integer "wiki_id"
+    t.integer "tag_id"
   end
+
+  add_index "wiki_tags", ["tag_id"], name: "index_wiki_tags_on_tag_id", using: :btree
+  add_index "wiki_tags", ["wiki_id"], name: "index_wiki_tags_on_wiki_id", using: :btree
 
   create_table "wikis", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
     t.text     "body"
     t.integer  "parent"
-    t.boolean  "version"
+    t.integer  "version"
     t.boolean  "deleted"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "last_revision"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

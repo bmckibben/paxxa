@@ -1,29 +1,34 @@
           <div class="panel-heading">
             <div class="row">
                 <div class="col-md-9 wiki-tags">
-                  <p class="wiki-title"><%= @wiki.title %></p>
-                  <p><a href="javascript:void(0)" data-tag-id="5" data-this-id="<%= wiki.id %>" class="btn btn-tag">tag for 5</a></p>
+                  <p class="wiki-title"><%= @wiki.id %>. <%= @wiki.title %></p>
+                  <p class="wiki-tags">
+                    <% @wiki.wiki_tags.each do |wiki_tag| %>
+                      <% if !wiki_tag.tag.nil? %>
+                      <a href="javascript:void(0)" data-tag-id="<%= wiki_tag.tag_id %>" data-this-id="<%= @wiki.id %>" class="btn btn-tag"><%= wiki_tag.tag.title  %></a>
+                      <% end %>
+                    <% end %>
+                  </p>
                 </div>
                 <div class=" col-md-3 wiki-actions right">
                   <i aria-hidden="false" class="fa fa-plus action-icon wiki-here" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Create a child wiki.'></i>
                   <i aria-hidden="false" class="fa fa-pencil action-icon wiki-edit" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Edit this wiki.'></i>
-                  <%= link_to @wiki, method: :delete, data: { confirm: 'Are you sure?' } do %><i aria-hidden="false" class="fa fa-trash action-icon" data-toggle='tooltip' data-placement='bottom' title='Inactivate this wiki.'></i><% end %>      
+                  <i aria-hidden="false" class="fa fa-trash action-icon wiki-delete" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Inactivate this wiki.'></i>
                 </div>
             </div>                  
           </div>
           <div class="panel-body">
-            <div class="row border-bottom">
-                <div class="col-md-12 wiki-tags">
-                  <%= @wiki.parent %>:<%= @wiki.id %>
-                </div> 
-            </div>
-            <div class="row wiki-body">
+            <div class="row">
+              <div class="col-md-12 wiki-body">
               <%= @wiki.body %>
+              </div>
             </div>
           </div>            
           <div class="panel-footer">  
-            <div class="row wiki-attributes">
+            <div class="row">
+              <div class="col-md-12 wiki-attributes">
               Author: <%= @wiki.user.login if !@wiki.user.nil? %> (version: <%= @wiki.version %> <%= "deleted" if @wiki.deleted? %>) |
-              Created:  <%= @wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= @wiki.updated_at.strftime("%Y-%m-%d %R") %> 
+              Created:  <%= @wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= @wiki.updated_at.strftime("%Y-%m-%d %R") %> <br/>_refresh_display
+              </div>
             </div>
           </div>
