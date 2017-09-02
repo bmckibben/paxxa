@@ -70,6 +70,7 @@ class WikisController < ApplicationController
   end
 
   def wiki_form
+    @wikis = Wiki.all.order(title: :asc)
     if params[:wiki_id] != "0"
       @wiki = Wiki.find(params[:wiki_id])
     else

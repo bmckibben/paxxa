@@ -102,6 +102,10 @@ function bindEditActionIcons(thisID) {
 		}		
 	})
 
+	$("#tag-delete").on("click", function() {
+		alert("removing tag "+$(this).data("tag")+" from "+$(this).data("wiki"))		
+	})
+
 };
 
 function bindDisplayActionIcons() {

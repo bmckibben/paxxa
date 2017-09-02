@@ -1,3 +1,9 @@
+<datalist id="tags">
+  <% @wikis.each do |tag| %>
+  <option value="<%=tag.id%>"><%= tag.title %></option>
+  <% end %>  
+</datalist>
+
 <%= form_for(@wiki, :html => {:class => "wiki-form", :remote=>true}) do |f| %>
   <% if @wiki.errors.any? %>
     <div id="error_explanation">
@@ -12,15 +18,30 @@
 
           <div class="panel-heading">
             <div class="row">
-                <div class="col-md-9 wiki-tags">
-                  <p class="wiki-title"><%= f.label :title %><%= f.text_field :title, class: "form-control" %></p>
+                <div class="col-md-10 wiki-tags">
+                  <p class="wiki-title">
+                    <%= f.label :title %><%= f.text_field :title, class: "form-control" %>
+                  </p>
                 </div>
-                <div class=" col-md-3 wiki-actions right">
+                <div class=" col-md-2 wiki-actions right">
                   <button name="commit" type="submit" class="btn-transparent"  data-toggle='tooltip' data-placement='bottom' title='Save changes to this wiki.'><i aria-hidden="false" class="fa fa-check-square-o action-icon" id="wiki-save"></i></button>
                   <i aria-hidden="false" class="fa fa-window-close-o action-icon" id="wiki-cancel" data-toggle='tooltip' data-placement='bottom' title='Close wiki without saving.'></i>    
                 </div>
             </div>  
-
+            <div class="row">
+              <div class="col-md-12" style="padding-top:0.5rem;">
+                    <%= f.label "Tags" %>
+                    <input list="tags">
+                    <% @wiki.wiki_tags.each do |wiki_tag| %>
+                      <% if !wiki_tag.tag.nil? %>
+                      <span class="btn btn-tag">
+                        <i aria-hidden="false" class="fa fa-trash tag-delete" data-tag="<%= wiki_tag.tag.id %>" data-wiki="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'></i>
+                        <%= wiki_tag.tag.title  %>
+                      </span>
+                      <% end %>
+                    <% end %>         
+              </div>  
+            </div>  
           </div>
           <div class="panel-body">
             <div class="row">
