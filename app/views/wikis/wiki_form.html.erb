@@ -34,10 +34,10 @@
                     <input list="tags">
                     <% @wiki.wiki_tags.each do |wiki_tag| %>
                       <% if !wiki_tag.tag.nil? %>
-                      <span class="btn btn-tag">
-                        <i aria-hidden="false" class="fa fa-trash tag-delete" data-tag="<%= wiki_tag.tag.id %>" data-wiki="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'></i>
+                      <a href="javascript:void(0)" class="btn  tag-delete" data-tag="<%= wiki_tag.tag.id %>" data-wiki="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'>
+                        <i aria-hidden="false" class="fa fa-trash" ></i>
                         <%= wiki_tag.tag.title  %>
-                      </span>
+                      </a>
                       <% end %>
                     <% end %>         
               </div>  

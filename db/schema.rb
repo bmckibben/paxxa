@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901144737) do
+ActiveRecord::Schema.define(version: 20170903165301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170901144737) do
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "wiki_tags", id: false, force: :cascade do |t|
+  create_table "wiki_tags", force: :cascade do |t|
     t.integer "wiki_id"
     t.integer "tag_id"
   end

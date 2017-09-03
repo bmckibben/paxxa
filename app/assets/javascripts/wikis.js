@@ -100,11 +100,19 @@ function bindEditActionIcons(thisID) {
 				reDisplayWiki(thisID);
 			};
 		}		
-	})
+	});
 
-	$("#tag-delete").on("click", function() {
+	$(".tag-delete").on("click", function() {
+		//alert("line 106");
 		alert("removing tag "+$(this).data("tag")+" from "+$(this).data("wiki"))		
-	})
+		
+		  $.ajax(
+		    {   url: "/wiki_tags/delete_wiki_tag", 
+		        method: "post",
+		        data: {"wiki_id": $(this).data("wiki"), tag_id: $(this).data("tag") }
+		    })
+		    .success(function(){$(this).remove();})
+		    .fail(function(){ alert("Failed to delete tag.")});	})
 
 };
 

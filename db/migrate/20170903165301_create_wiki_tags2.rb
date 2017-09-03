@@ -1,4 +1,4 @@
-class CreateWikiTags < ActiveRecord::Migration
+class CreateWikiTags2 < ActiveRecord::Migration
   def change
     create_table :wiki_tags do |t|
       t.integer :wiki_id
