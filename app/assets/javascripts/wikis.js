@@ -9,125 +9,88 @@ $(document).ready(function() {
 
   });
 
-	bindDisplayActionIcons()
+	bindDisplayActionIcons();
+	bindSidebarActions();
 
 	$('[data-toggle="tooltip"]').tooltip();
 	// requires in <i>:
 	// data-toggle='tooltip' data-placement='left' title='title'
 
-
-    $('i.tree-toggler').click(function () {
-        $(this).parent().children('ul.tree').toggle(300);
-        $(this).toggleClass('fa-chevron-right fa-chevron-down')
-    });
-
-    $(".tree").hide()
-
-	
 }) //document.ready
 
-function getForm(id){
+// helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function checkExisting(check_id){
 
-var form;
-
-    //paths differ between dev and production, prod is /notifications/set
-  $.ajax(
-    {   url: "/wikis/wiki_form", 
-        method: "get",
-        data: {"wiki_id": id }, 
-        dataType: "html" ,
-        async: false
-    })
-    .done(function(data){form = data})
-    .fail(function(){ alert("Failed to retreive form.")});
-    return form;
-}; //getForm
-
-function insertAtTop(formHTML){
-
-	insertHTML = '<div class="panel panel-default wiki-panel" id="0" >'+formHTML+'</div>';
-	$(".wiki-panel:first").before(insertHTML);
-
-};	
-
-function insertAfterWiki(wikiHTML, parentID, newID){
-
-	insertHTML = '<div class="panel panel-default wiki-panel" id="'+newID+'" >'+wikiHTML+'</div>';
-	$("#"+parentID).after(insertHTML);
-	$("#wiki_parent").val(parentID);
-
+	if (check_id=="0" && $("#"+check_id).length != 0)  {
+		// edit a wiki but there is alerady a form open
+		alert("You must save or cancel any new wiki before you can create a new one.");
+		return true;
+	} else if ($("#"+check_id).length != 0) {	
+		return true;
+	};
+	return false;
 };
 
-// function showAfterWiki(wikiID, openerID){
+// display wikis --------------------------------------------------------------
 
-// 	$("#"+openerID).after(getWiki(wikiID));
-// 	bindDisplayActionIcons()	
+// get and display wiki in existing div
+function reDisplayWiki(id){
 
-// };
+	var wiki = getWiki(id);
+	$("#"+id).html(wiki);
+	bindDisplayActionIcons();
+
+}; //reDisplay
+
 
 function editInPlace(formHTML, divID){
 
 	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+formHTML+'</div>'
 	$("#"+divID).replaceWith(insertHTML);
 
-};
+}; //editInPlace
 
-function checkExisting(){
-	if ($("#0").length != 0) {
-		alert("You must save or cancel any new wiki before you can create a new one.");
-		return true;
+
+function insertAtTop(formHTML,divID){
+	alert(divID);
+	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+formHTML+'</div>';
+	$(".wiki-panel:first").before(insertHTML);
+	bindDisplayActionIcons();
+
+};	//insertAtTop
+
+function insertAfterWiki(wikiHTML, parentID, divID){
+
+	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+wikiHTML+'</div>';
+	$("#"+parentID).after(insertHTML);
+	$("#wiki_parent").val(parentID);
+	bindDisplayActionIcons();
+
+}; //insertAfterWiki
+
+
+function addTagToTray(id, tag_id, tagName){
+
+	if (tagName != ""){
+		var tagAnchor = "<a href='javascript:void(0)' class='btn  tag-delete' data-tag='"+id+"' data-wiki='"+tag_id+"' data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'> <i aria-hidden='false' class='fa fa-trash' ></i>" + tagName + "</a>";
+		$("#tag-tray").append(tagAnchor);
+		$("#input-tag").value("");
 	};
-	return false;
 };
 
-
-// get the html to display wiki in div
-function getDisplay(id) {
-	//if new update div id with record id
-}
-
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-// bind click event for the icons on a newly displayed wiki form
-function bindEditActionIcons(thisID) {
-
-	$("#wiki-cancel").on("click", function() {
-		if(confirm("Are you sure you want to close this without saving?")){
-			if (thisID==0){
-				$("#"+thisID).remove();
-			}else{
-				reDisplayWiki(thisID);
-			};
-		}		
-	});
-
-	$(".tag-delete").on("click", function() {
-		//alert("line 106");
-		alert("removing tag "+$(this).data("tag")+" from "+$(this).data("wiki"))		
-		
-		  $.ajax(
-		    {   url: "/wiki_tags/delete_wiki_tag", 
-		        method: "post",
-		        data: {"wiki_id": $(this).data("wiki"), tag_id: $(this).data("tag") }
-		    })
-		    .success(function(){$(this).remove();})
-		    .fail(function(){ alert("Failed to delete tag.")});	})
-
-};
-
+// click binders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function bindDisplayActionIcons() {
 	$("#wiki-new").on("click", function() {
 
-		if (checkExisting()) { return };		
-		insertAtTop(getForm(0));
+		if (checkExisting("0")) { return };		
+		insertAtTop(getForm(0),0);
 		bindEditActionIcons(0);
 
 	});
 
 	$(".wiki-edit").on("click", function() {
 
-		if (checkExisting()) { return };
+		if (checkExisting("0")) { return };
 		editInPlace(getForm($(this).data("id")),$(this).data("id"));
 		bindEditActionIcons($(this).data("id"));
 
@@ -135,7 +98,7 @@ function bindDisplayActionIcons() {
 
 	$(".wiki-here").on("click", function() {
 
-		if (checkExisting()) { return };
+		if (checkExisting("0")) { return };
 		insertAfterWiki(getForm(0),$(this).data("id"),"0");
 		bindEditActionIcons(0);
 
@@ -153,25 +116,81 @@ function bindDisplayActionIcons() {
 		};	
 	});
 
-	$("#wiki-delete").on("click", function() {
+	$(".wiki-remove").on("click", function() {
+			$("#"+$(this).data("id")).remove();	
+	});	
+
+	$('[data-toggle="tooltip"]').tooltip();
+
+}	
+
+function bindEditActionIcons(thisID) {
+
+	$("#wiki-cancel").on("click", function() {
+		if(confirm("Are you sure you want to close this without saving?")){
+			if (thisID==0){
+				$("#"+thisID).remove();
+			}else{
+				reDisplayWiki(thisID);
+			};
+		}		
+	});
+
+	$(".tag-delete").on("click", function() {
+		
+		//alert("removing tag "+$(this).data("tag")+" from "+$(this).data("wiki"))		
+		
+		deleteTag($(this))
+
+	});
+
+	$('#add-tag').click(function () {
+		var tag_id = $('#input-tag').val();
+		var wiki_id = $(this).data("wiki-id");
+		var tag_name = $('#tag_list [value="'+tag_id+'"]').text();
+
+		addTag( wiki_id, tag_id, tag_name);
+	});	
+
+	$(".wiki-delete").on("click", function() {
 		if(confirm("Are you sure you want to delete this wiki?")){
 			$("#"+$(this).data("id")).remove();
 			// just remove for now, eventually move to archive
 		}		
 	});
 
-	$('[data-toggle="tooltip"]').tooltip();
+	$('[data-toggle="tooltip"]').tooltip();	
 
-}	
+}
 
-function reDisplayWiki(id){
+function bindSidebarActions() {
 
-	var wiki = getWiki(id);
-	$("#"+id).html(wiki);
-	bindDisplayActionIcons();
 
-}; //reDisplay
+    $('i.tree-toggler').click(function () {
+        $(this).parent().children('ul.tree').toggle(300);
+        $(this).toggleClass('fa-chevron-right fa-chevron-down')
+    });
 
+    $(".tree").hide();
+
+    $('a.tree-menu').click(function () {
+        alert($(this).data('wiki-id'));
+
+        if (checkExisting($(this).data('wiki-id'))) {
+        	// view a wiki already on the page
+        	$('html,body').animate({ scrollTop: $("#"+$(this).data('wiki-id')).offset().top-70});
+        } else {
+        	// view a wiki not on the page
+			insertAtTop(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
+			bindDisplayActionIcons();
+        }
+    });
+
+
+
+}
+
+// ajax functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getWiki(id){
   $.ajax(
     {   url: "/wikis/re_display", 
@@ -185,3 +204,45 @@ function getWiki(id){
 
     return wikiHTML
 };
+
+function getForm(id){
+
+var form;
+
+  $.ajax(
+    {   url: "/wikis/wiki_form", 
+        method: "get",
+        data: {"wiki_id": id }, 
+        dataType: "html" ,
+        async: false
+    })
+    .done(function(data){form = data})
+    .fail(function(){ alert("Failed to retreive form.")});
+    return form;
+
+}; //getForm
+
+function deleteTag(tag) {
+	$.ajax(
+	{   url: "/wiki_tags/delete_wiki_tag", 
+	    method: "post",
+	    data: {"id":tag.data("tag") }
+	})
+	.success(function(){tag.remove();})
+	.fail(function(){ alert("Failed to delete tag.")});
+}; // deleteTag
+
+function addTag(wiki_id,tag_id,tag_name) {
+	var id = 0;
+	$.ajax(
+	{   url: "/wiki_tags/new_wiki_tag", 
+	    method: "post",
+	    data: {"wiki_id":wiki_id, "tag_id":tag_id }
+	})
+	.success(function(data){
+		id = data;
+		addTagToTray(id, tag_id, tag_name);
+	})
+	.fail(function(){ alert("Failed to add tag.")});
+	return id;
+}; // deleteTag

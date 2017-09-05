@@ -127,7 +127,7 @@ class WikisController < ApplicationController
 
       
 
-      menu += "<li>#{tree_toggler}<a href='#' class='tree-menu'>#{link.title}</a>"
+      menu += "<li>#{tree_toggler}<a href='javascript:void(0);' data-wiki-id='#{link.id}' class='tree-menu'>#{link.title}</a>"
 
       current_level = link.path.length
     end  

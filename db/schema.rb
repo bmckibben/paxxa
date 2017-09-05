@@ -49,10 +49,11 @@ ActiveRecord::Schema.define(version: 20170903165301) do
     t.integer  "user_id"
     t.text     "body"
     t.integer  "parent"
-    t.integer  "version"
+    t.boolean  "version"
     t.boolean  "deleted"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "last_revision"
   end
 
 end

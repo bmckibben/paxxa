@@ -1,4 +1,4 @@
-<datalist id="tags">
+<datalist id="tag_list">
   <% @wikis.each do |tag| %>
   <option value="<%=tag.id%>"><%= tag.title %></option>
   <% end %>  
@@ -19,28 +19,35 @@
           <div class="panel-heading">
             <div class="row">
                 <div class="col-md-10 wiki-tags">
-                  <p class="wiki-title">
-                    <%= f.label :title %><%= f.text_field :title, class: "form-control" %>
+                  <p class="wiki-title" style="width:300px;">
+                    <%= f.label :title %><%= f.text_field :title, class: "form-control" %> 
                   </p>
                 </div>
                 <div class=" col-md-2 wiki-actions right">
                   <button name="commit" type="submit" class="btn-transparent"  data-toggle='tooltip' data-placement='bottom' title='Save changes to this wiki.'><i aria-hidden="false" class="fa fa-check-square-o action-icon" id="wiki-save"></i></button>
-                  <i aria-hidden="false" class="fa fa-window-close-o action-icon" id="wiki-cancel" data-toggle='tooltip' data-placement='bottom' title='Close wiki without saving.'></i>    
+                  <i aria-hidden="false" class="fa fa-window-close-o action-icon" id="wiki-cancel" data-toggle='tooltip' data-placement='bottom' title='Close wiki without saving.'></i>
+                  <i aria-hidden="false" class="fa fa-trash action-icon wiki-delete" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Inactivate this wiki.'></i>
                 </div>
             </div>  
+            <%= f.label "Tags" %>
             <div class="row">
-              <div class="col-md-12" style="padding-top:0.5rem;">
-                    <%= f.label "Tags" %>
-                    <input list="tags">
-                    <% @wiki.wiki_tags.each do |wiki_tag| %>
-                      <% if !wiki_tag.tag.nil? %>
-                      <a href="javascript:void(0)" class="btn  tag-delete" data-tag="<%= wiki_tag.tag.id %>" data-wiki="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'>
-                        <i aria-hidden="false" class="fa fa-trash" ></i>
-                        <%= wiki_tag.tag.title  %>
-                      </a>
-                      <% end %>
-                    <% end %>         
-              </div>  
+              <div class="col-md-4 col-sm-12">
+                
+                <div class="input-group" style="width:300px;">
+                  <input type="text" class="form-control" list="tag_list" placeholder="Type or Select Tag" aria-label="Wiki tag" aria-describedby="add-tag" id="input-tag">
+                  <span class="input-group-addon" id="add-tag" data-wiki-id="<%= @wiki.id %>">Add</span>
+                </div>
+              </div>
+              <div class="col-md-8 col-sm-12" id="tag-tray">
+                <% @wiki.wiki_tags.each do |wiki_tag| %>
+                  <% if !wiki_tag.tag.nil? %>
+                  <a href="javascript:void(0)" class="btn  tag-delete" data-tag="<%= wiki_tag.id %>" data-wiki="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'>
+                    <i aria-hidden="false" class="fa fa-trash" ></i>
+                    <%= wiki_tag.tag.title  %>
+                  </a>
+                  <% end %>
+                <% end %>
+              </div>
             </div>  
           </div>
           <div class="panel-body">

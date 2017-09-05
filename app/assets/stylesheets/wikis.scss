@@ -80,13 +80,13 @@ ul.tree {
     background-color: #bbb;
     color: #555;  
     border-radius: 6px 6px 0 0; 
+    cursor: pointer;
 
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     background-color: #ddd;
     border-color: #bbb #bbb transparent;
-    cursor:pointer;
 }
 
 .tree-toggler {
@@ -212,4 +212,20 @@ ul.tree {
     vertical-align: baseline;
     white-space: nowrap; 
     margin:0;   
+}
+
+#input-tag {
+  background-image: url("/assets/dropdown.png");
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  margin-bottom: 0;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  padding-right: 5px;
+}
+
+#wiki_title{
+    font-size: 2rem;
+    font-weight: bold;
 }

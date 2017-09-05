@@ -63,16 +63,36 @@ class WikiTagsController < ApplicationController
 
   def delete_wiki_tag
     puts "#################################################################"
-    puts "wiki: #{params[:wiki_id]}"
-    puts "tag: #{params[:tag_id]}"
+    puts "tag: #{params[:id]}"
     puts "#################################################################"
-    WikiTag.where("wiki_id = ? and tag_id = ?", params[:wiki_id], params[:tag_id]).destroy_all
+    WikiTag.find(params[:id]).destroy
     
     respond_to do |format|
       format.html { render nothing: true }
       format.js { render nothing: true }
     end    
   end
+
+  def new_wiki_tag
+    puts "#################################################################"
+    puts "wiki: #{params[:wiki_id]}"
+    puts "tag: #{params[:tag_id]}"
+    puts "#################################################################"
+
+    @wiki_tag = WikiTag.new({:wiki_id => params[:wiki_id], :tag_id => params[:tag_id]})
+
+    respond_to do |format|
+      if @wiki_tag.save
+        format.html { render nothing: true }
+        format.js { render :json => @wiki_tag.id }
+      else
+        format.html { render nothing: true }
+        format.js { render nothing: true }
+      end
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki_tag

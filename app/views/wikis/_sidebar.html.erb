@@ -20,7 +20,13 @@
   	<div class="well nested-menu" style="width:100%; padding: 8px 0;"><%= @menu.html_safe %></div>
   </div>
   <div class="tab-pane" id="recent">A list of wikis catorgized by last updated</div>
-  <div class="tab-pane" id="open">A list of wikis currently displayed</div>
+  <div class="tab-pane" id="open">
+      <ul class="nav nav-list"> 
+      <% @wikis.each do |wiki_link| %>
+         <li><a href='javascript:void(0);' data-wiki-id='<%= wiki_link.id %>' class='tree-menu'><%= wiki_link.title %></a></li>
+      <% end %>
+      </ul>
+  </div>
 </div>
 
 
