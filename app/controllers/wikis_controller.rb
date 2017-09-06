@@ -6,6 +6,8 @@ class WikisController < ApplicationController
   def index
     @wikis = Wiki.where(parent: nil).order(updated_at: :desc)
     @menu = nested_set_menu
+    #might change recents to where < one month?
+    @recents = Wiki.all.order(updated_at: :desc).limit(100)
   end
 
   # GET /wikis/1

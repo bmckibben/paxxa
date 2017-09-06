@@ -13605,3 +13605,10 @@ ul.tree {
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* line 237, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+li.recent-group {
+  list-style-type: none;
+  margin-left: -2rem;
+  font-weight: bold;
+}

@@ -19,11 +19,22 @@
   <div class="tab-pane active" id="menu">
   	<div class="well nested-menu" style="width:100%; padding: 8px 0;"><%= @menu.html_safe %></div>
   </div>
-  <div class="tab-pane" id="recent">A list of wikis catorgized by last updated</div>
   <div class="tab-pane" id="open">
       <ul class="nav nav-list"> 
       <% @wikis.each do |wiki_link| %>
          <li><a href='javascript:void(0);' data-wiki-id='<%= wiki_link.id %>' class='tree-menu'><%= wiki_link.title %></a></li>
+      <% end %>
+      </ul>
+  </div>
+  <div class="tab-pane" id="recent">
+      <ul class="recent-list"> 
+      <% group_date = "" %>  
+      <% @recents.each do |recent_link| %>
+         <% if group_date != recent_link.updated_at.strftime('%F') %>
+            <% group_date = recent_link.updated_at.strftime('%F') %>  
+            <li class="recent-group"><%= group_date %></li>   
+         <% end %>
+         <li><a href='javascript:void(0);' data-wiki-id='<%= recent_link.id %>' class='tree-menu'><%= recent_link.title %></a></li>
       <% end %>
       </ul>
   </div>
