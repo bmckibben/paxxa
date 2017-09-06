@@ -32,8 +32,10 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(wiki_params)
     @wiki.user_id = current_user.id
     @wiki_id = 0
-    respond_to do |format|
+
+    respond_to do |format|    
       if @wiki.save
+        create_parent_tag(@wiki)
         format.html { redirect_to wikis_url, notice: 'Wiki was successfully created.' }
         format.js { render "wikis/display" }
       else
@@ -142,6 +144,20 @@ class WikisController < ApplicationController
   end
 
   private
+
+    def create_parent_tag(wiki)
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      puts wiki.parent
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      if !wiki.parent.nil?
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        puts wiki.id
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        wiki_tag = WikiTag.new({:wiki_id => wiki.id, :tag_id => wiki.parent})
+        wiki_tag.save
+      end
+    end  
+
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki
       @wiki = Wiki.find(params[:id])

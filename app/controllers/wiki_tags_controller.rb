@@ -62,9 +62,7 @@ class WikiTagsController < ApplicationController
   end
 
   def delete_wiki_tag
-    puts "#################################################################"
-    puts "tag: #{params[:id]}"
-    puts "#################################################################"
+ 
     WikiTag.find(params[:id]).destroy
     
     respond_to do |format|
@@ -74,11 +72,7 @@ class WikiTagsController < ApplicationController
   end
 
   def new_wiki_tag
-    puts "#################################################################"
-    puts "wiki: #{params[:wiki_id]}"
-    puts "tag: #{params[:tag_id]}"
-    puts "#################################################################"
-
+    
     @wiki_tag = WikiTag.new({:wiki_id => params[:wiki_id], :tag_id => params[:tag_id]})
 
     respond_to do |format|

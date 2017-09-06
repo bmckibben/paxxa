@@ -11,7 +11,7 @@
                   </p>
                 </div>
                 <div class=" col-md-3 wiki-actions right">
-                  <i aria-hidden="false" class="fa fa-plus action-icon wiki-here" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Create a child wiki.'></i>
+                  <i aria-hidden="false" class="fa fa-plus action-icon wiki-here" data-id="<%= @wiki.id %>" data-parent="<%= @wiki.title %>" data-toggle='tooltip' data-placement='bottom' title='Create a child wiki.'></i>
                   <i aria-hidden="false" class="fa fa-pencil action-icon wiki-edit" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Edit this wiki.'></i>
                   <i aria-hidden="false" class="fa fa-times-circle-o action-icon wiki-remove" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Remove this wiki from the pags.'></i>
             </div>                  
@@ -27,7 +27,7 @@
             <div class="row">
               <div class="col-md-12 wiki-attributes">
               Author: <%= @wiki.user.login if !@wiki.user.nil? %> (version: <%= @wiki.version %> <%= "deleted" if @wiki.deleted? %>) |
-              Created:  <%= @wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= @wiki.updated_at.strftime("%Y-%m-%d %R") %> <br/> re_display
+              Created:  <%= @wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= @wiki.updated_at.strftime("%Y-%m-%d %R") %> <br/>
               </div>
             </div>
           </div>

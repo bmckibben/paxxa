@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   $(".sidebar-toggle").click(function() {
-    // alert("You clicked me!")
 
     $("#mySidenav").toggleClass("sidenav-collapsed sidenav-open");
     $("#main").toggleClass("main-open main-collapsed");
@@ -52,18 +51,19 @@ function editInPlace(formHTML, divID){
 
 
 function insertAtTop(formHTML,divID){
-	alert(divID);
+
 	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+formHTML+'</div>';
 	$(".wiki-panel:first").before(insertHTML);
 	bindDisplayActionIcons();
 
 };	//insertAtTop
 
-function insertAfterWiki(wikiHTML, parentID, divID){
+function insertAfterWiki(wikiHTML, parentID, divID, parentName){
 
 	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+wikiHTML+'</div>';
 	$("#"+parentID).after(insertHTML);
 	$("#wiki_parent").val(parentID);
+	addTagToTray(parentID,0,parentName);
 	bindDisplayActionIcons();
 
 }; //insertAfterWiki
@@ -72,9 +72,9 @@ function insertAfterWiki(wikiHTML, parentID, divID){
 function addTagToTray(id, tag_id, tagName){
 
 	if (tagName != ""){
-		var tagAnchor = "<a href='javascript:void(0)' class='btn  tag-delete' data-tag='"+id+"' data-wiki='"+tag_id+"' data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'> <i aria-hidden='false' class='fa fa-trash' ></i>" + tagName + "</a>";
+		var tagAnchor = "<a href='javascript:void(0)' class='btn  tag-delete' data-tag='"+id+"' data-wiki='"+tag_id+"' data-toggle='tooltip' data-placement='bottom' title='Remove this tag.'> <i aria-hidden='false' class='fa fa-trash' ></i> " + tagName + "</a>";
 		$("#tag-tray").append(tagAnchor);
-		$("#input-tag").value("");
+
 	};
 };
 
@@ -99,7 +99,7 @@ function bindDisplayActionIcons() {
 	$(".wiki-here").on("click", function() {
 
 		if (checkExisting("0")) { return };
-		insertAfterWiki(getForm(0),$(this).data("id"),"0");
+		insertAfterWiki(getForm(0),$(this).data("id"),"0",$(this).data("parent"));
 		bindEditActionIcons(0);
 
 	});
@@ -138,8 +138,6 @@ function bindEditActionIcons(thisID) {
 
 	$(".tag-delete").on("click", function() {
 		
-		//alert("removing tag "+$(this).data("tag")+" from "+$(this).data("wiki"))		
-		
 		deleteTag($(this))
 
 	});
@@ -174,7 +172,6 @@ function bindSidebarActions() {
     $(".tree").hide();
 
     $('a.tree-menu').click(function () {
-        alert($(this).data('wiki-id'));
 
         if (checkExisting($(this).data('wiki-id'))) {
         	// view a wiki already on the page
@@ -242,6 +239,7 @@ function addTag(wiki_id,tag_id,tag_name) {
 	.success(function(data){
 		id = data;
 		addTagToTray(id, tag_id, tag_name);
+		$("#input-tag").value("");
 	})
 	.fail(function(){ alert("Failed to add tag.")});
 	return id;
