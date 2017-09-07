@@ -23,6 +23,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def whoami
+  end
+
   # POST /users
   # POST /users.json
   def create

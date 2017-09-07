@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'wikis/test' => 'wikis#test'
   post 'wiki_tags/delete_wiki_tag' => 'wiki_tags#delete_wiki_tag'
   post 'wiki_tags/new_wiki_tag' => 'wiki_tags#new_wiki_tag'
+  get 'users/whoami' => 'users#whoami'
 
   resources :wikis
 
