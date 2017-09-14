@@ -13388,30 +13388,34 @@ body,
 }
 
 /* line 57, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
-.sidebar-toggle {
-  cursor: pointer;
+.sidebar-date {
   margin-right: 2rem;
   margin-bottom: 1rem;
   font-size: 2rem;
 }
 
-/* line 64, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 63, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+.sidebar-toggle {
+  cursor: pointer;
+}
+
+/* line 67, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .sidebar-content {
   width: 100%;
 }
 
-/* line 68, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 71, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .sidebar-actions {
   cursor: pointer;
   font-size: 2rem;
 }
 
-/* line 73, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 76, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 ul.tree {
   margin-left: 2rem;
 }
 
-/* line 77, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 80, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .nav-tabs > li > a {
   font-size: 1rem;
   line-height: 1;
@@ -13421,23 +13425,24 @@ ul.tree {
   cursor: pointer;
 }
 
-/* line 87, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 90, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   background-color: #ddd;
   border-color: #bbb #bbb transparent;
 }
 
-/* line 92, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 95, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .tree-toggler {
   cursor: pointer;
+  font-size: 14px;
 }
 
-/* line 96, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 100, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 #sidebarTabs {
   margin-top: 10px;
 }
 
-/* line 100, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 104, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .sidenav {
   height: 100%;
   width: 0;
@@ -13450,56 +13455,56 @@ ul.tree {
   transition: 0.5s;
 }
 
-/* line 113, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 117, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .sidenav a {
   transition: 0.3s;
 }
 
-/* line 117, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 121, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .sidenav a:hover, .offcanvas a:focus {
   color: #f1f1f1;
 }
 
-/* line 121, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 125, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .sidenav-collapsed {
   width: 0;
   padding-right: 0;
 }
 
-/* line 126, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 130, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .sidenav-open {
   width: 300px;
   padding-right: 2rem;
 }
 
-/* line 131, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 135, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .main-open {
   margin-right: 0;
 }
 
-/* line 135, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 139, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .main-collapsed {
   margin-right: 300px;
 }
 
-/* line 139, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 143, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 #main {
   transition: margin-right .5s;
   padding-right: 2rem;
 }
 
 @media screen and (max-height: 450px) {
-  /* line 145, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+  /* line 149, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
   .sidenav {
     padding-top: 15px;
   }
 
-  /* line 146, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+  /* line 150, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
   .sidenav a {
     font-size: 18px;
   }
 }
-/* line 149, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 153, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .btn-tag {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f900+0,dcdc00+50,d2d200+54,dede00+100 */
   background: #f9f900;
@@ -13524,7 +13529,7 @@ ul.tree {
   margin: 0;
 }
 
-/* line 168, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 172, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .btn-tag:hover {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dede00+0,d2d200+46,dcdc00+50,f9f900+100 */
   background: #dede00;
@@ -13539,7 +13544,7 @@ ul.tree {
   /* IE6-9 */
 }
 
-/* line 177, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 181, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .wiki-tags {
   margin-bottom: 0;
   line-height: 1rem;
@@ -13548,22 +13553,23 @@ ul.tree {
 /*.nav > li > a:link {
   color: #337ab7;
 }*/
-/* line 186, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 190, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .nav > li > a {
   color: #337ab7;
 }
 
-/* line 190, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 194, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .nav > li > a:hover {
   color: #66ccff;
 }
 
-/* line 194, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 198, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .tree-menu {
   color: #337ab7;
+  font-size: 14px;
 }
 
-/* line 198, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 203, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 .tag-delete {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f900+0,dcdc00+50,d2d200+54,dede00+100 */
   background: #f9f900;
@@ -13588,7 +13594,7 @@ ul.tree {
   margin: 0;
 }
 
-/* line 217, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 222, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 #input-tag {
   background-image: url("/assets/dropdown.png");
   background-position: right center;
@@ -13600,13 +13606,13 @@ ul.tree {
   padding-right: 5px;
 }
 
-/* line 228, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 233, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 #wiki_title {
   font-size: 2rem;
   font-weight: bold;
 }
 
-/* line 237, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
+/* line 242, /media/sf_apps/paxxa/app/assets/stylesheets/wikis.scss */
 li.recent-group {
   list-style-type: none;
   margin-left: -2rem;

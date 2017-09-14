@@ -87,6 +87,15 @@ function bindDisplayActionIcons() {
 		bindEditActionIcons(0);
 
 	});
+	
+	$("#wiki-new-journal").on("click", function() {
+
+		if (checkExisting("0")) { return };		
+		insertAtTop(getForm(0,"j"),0);
+		bindEditActionIcons(0);
+
+	});
+
 
 	$(".wiki-edit").on("click", function() {
 
@@ -202,14 +211,14 @@ function getWiki(id){
     return wikiHTML
 };
 
-function getForm(id){
+function getForm(id, type=""){
 
 var form;
 
   $.ajax(
     {   url: "/wikis/wiki_form", 
         method: "get",
-        data: {"wiki_id": id }, 
+        data: {"wiki_id": id, "type": type }, 
         dataType: "html" ,
         async: false
     })

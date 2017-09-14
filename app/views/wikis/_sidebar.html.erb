@@ -1,45 +1,45 @@
-    <div class="white-scroller sidebar-content">
-      <p id="sidebar-actions pull-right">
-        <i aria-hidden="false" class="fa fa-plus action-icon" id="wiki-new"  data-toggle='tooltip' data-placement='bottom' title='Add a new wiki.'></i>
-        <i aria-hidden="false" class="fa fa-home action-icon" id="wiki-new"  data-toggle='tooltip' data-placement='bottom' title='Display home wikis.'></i>
-      </p> 
+<div class="white-scroller sidebar-content">
+  
+  <p id="sidebar-actions pull-right">
+    <i aria-hidden="false" class="fa fa-plus action-icon" id="wiki-new"  data-toggle='tooltip' data-placement='bottom' title='Add a new wiki.'></i>
+    <i aria-hidden="false" class="fa fa-file-text action-icon" id="wiki-new-journal"  data-toggle='tooltip' data-placement='bottom' title='Add a new journal.'></i>    
+    <i aria-hidden="false" class="fa fa-home action-icon" id="wiki-home"  data-toggle='tooltip' data-placement='bottom' title='Display home wikis.'></i>
+  </p> 
 
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="search" aria-label="Search" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2"><i aria-hidden="false" class="fa fa-search action-icon" id="wiki-new" data-toggle='tooltip' data-placement='bottom' title='Search wiki contents.'></i></span>
-</div>        
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="search" aria-label="Search" aria-describedby="basic-addon2">
+    <span class="input-group-addon" id="basic-addon2"><i aria-hidden="false" class="fa fa-search action-icon" id="wiki-new" data-toggle='tooltip' data-placement='bottom' title='Search wiki contents.'></i></span>
+  </div>        
 
-<ul class="nav nav-tabs" id="sidebarTabs">
-  <li><a data-target="#open" data-toggle="tab">Open</a></li>
-  <li class="active"><a data-target="#menu" data-toggle="tab">Menu</a></li>  
-  <li><a data-target="#recent" data-toggle="tab">Recent</a></li>  
-</ul>
+  <ul class="nav nav-tabs" id="sidebarTabs">
+    <li><a data-target="#open" data-toggle="tab">Open</a></li>
+    <li class="active"><a data-target="#menu" data-toggle="tab">Menu</a></li>  
+    <li><a data-target="#recent" data-toggle="tab">Recent</a></li>  
+  </ul>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="menu">
-  	<div class="well nested-menu" style="width:100%; padding: 8px 0;"><%= @menu.html_safe %></div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="menu">
+    	<div class="well nested-menu" style="width:100%; padding: 8px 0;"><%= @menu.html_safe %></div>
+    </div>
+    <div class="tab-pane" id="open">
+        <ul class="nav nav-list"> 
+        <% @wikis.each do |wiki_link| %>
+           <li><a href='javascript:void(0);' data-wiki-id='<%= wiki_link.id %>' class='tree-menu'><%= wiki_link.title %></a></li>
+        <% end %>
+        </ul>
+    </div>
+    <div class="tab-pane" id="recent">
+        <ul class="recent-list"> 
+        <% group_date = "" %>  
+        <% @recents.each do |recent_link| %>
+           <% if group_date != recent_link.updated_at.strftime('%F') %>
+              <% group_date = recent_link.updated_at.strftime('%F') %>  
+              <li class="recent-group"><%= group_date %></li>   
+           <% end %>
+           <li><a href='javascript:void(0);' data-wiki-id='<%= recent_link.id %>' class='tree-menu'><%= recent_link.title %></a></li>
+        <% end %>
+        </ul>
+    </div>
   </div>
-  <div class="tab-pane" id="open">
-      <ul class="nav nav-list"> 
-      <% @wikis.each do |wiki_link| %>
-         <li><a href='javascript:void(0);' data-wiki-id='<%= wiki_link.id %>' class='tree-menu'><%= wiki_link.title %></a></li>
-      <% end %>
-      </ul>
-  </div>
-  <div class="tab-pane" id="recent">
-      <ul class="recent-list"> 
-      <% group_date = "" %>  
-      <% @recents.each do |recent_link| %>
-         <% if group_date != recent_link.updated_at.strftime('%F') %>
-            <% group_date = recent_link.updated_at.strftime('%F') %>  
-            <li class="recent-group"><%= group_date %></li>   
-         <% end %>
-         <li><a href='javascript:void(0);' data-wiki-id='<%= recent_link.id %>' class='tree-menu'><%= recent_link.title %></a></li>
-      <% end %>
-      </ul>
-  </div>
-</div>
-
-
 
 </div>  

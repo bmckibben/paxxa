@@ -1,7 +1,7 @@
           <div class="panel-heading">
             <div class="row">
                 <div class="col-md-9 wiki-tags">
-                  <p class="wiki-title"><%= @wiki.id %>. <%= @wiki.title %></p>
+                  <p class="wiki-title"><%= @wiki.title %></p>
                   <p class="wiki-tags">
                     <% @wiki.wiki_tags.each do |wiki_tag| %>
                       <% if !wiki_tag.tag.nil? %>
@@ -27,7 +27,7 @@
           <div class="panel-footer">  
             <div class="row">
               <div class="col-md-12 wiki-attributes">
-              Author: <%= @wiki.user.login if !@wiki.user.nil? %> (version: <%= @wiki.version %> <%= "deleted" if @wiki.deleted? %>) |
+              Author: <%= @wiki.user.login if !@wiki.user.nil? %> (version: <%= @wiki.version %> <%= "deleted" if @wiki.deleted? %>) | ID: <%= @wiki.id %> |
               Created:  <%= @wiki.created_at.strftime("%Y-%m-%d %R") %> | Updated: <%= @wiki.updated_at.strftime("%Y-%m-%d %R") %> <br/>
               </div>
             </div>

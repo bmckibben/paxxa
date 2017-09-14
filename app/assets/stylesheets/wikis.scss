@@ -54,11 +54,14 @@
     width: 16%;
 }
 
-.sidebar-toggle {
-    cursor: pointer;
+.sidebar-date {
     margin-right:2rem;
     margin-bottom:1rem;
     font-size: 2rem;
+}
+
+.sidebar-toggle {
+    cursor: pointer;
 }
 
 .sidebar-content {
@@ -91,6 +94,7 @@ ul.tree {
 
 .tree-toggler {
     cursor:pointer;
+    font-size: 14px;
 }
 
 #sidebarTabs {
@@ -193,6 +197,7 @@ ul.tree {
 
 .tree-menu {
   color: #337ab7;
+  font-size: 14px;
 }
 
 .tag-delete {

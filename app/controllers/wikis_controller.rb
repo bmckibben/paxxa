@@ -81,6 +81,10 @@ class WikisController < ApplicationController
       @wiki = Wiki.new
     end
 
+    if params[:type] == "j"
+      @wiki.title = Time.now.to_formatted_s(:stardate)
+    end  
+
     respond_to do |format|
       format.html { render layout: false}
       format.json { render nothing: true }
@@ -97,17 +101,24 @@ class WikisController < ApplicationController
   end 
 
   def nested_set_menu
-    nested_set = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, title, path) AS (
-      SELECT id, title, ARRAY[id]
-      FROM wikis
-      WHERE parent IS NULL
+    nested_set = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, path) AS (
+
+      select wikis.id, ARRAY[wikis.id]
+      from wikis left outer join wiki_tags on wikis.id = wiki_tags.wiki_id
+      where wiki_tags.tag_id is null
+
       UNION ALL
-      SELECT wikis.id, wikis.title, path || wikis.id
+      SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id
       FROM category_tree
-      JOIN wikis ON wikis.parent=category_tree.id
-      WHERE NOT wikis.id = ANY(path)
+      JOIN wiki_tags ON wiki_tags.tag_id=category_tree.id
+      WHERE NOT wiki_tags.wiki_id = ANY(path)
       )
-      SELECT * FROM category_tree ORDER BY path")
+
+
+      SELECT category_tree.*, wikis.title 
+      FROM category_tree 
+            right outer join wikis on category_tree.id = wikis.id
+      ORDER BY path")
 
     current_level = 1
     first_item = true
