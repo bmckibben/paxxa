@@ -32,6 +32,9 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'angular_rails_csrf', '1.0.4'
 gem 'simple_enum', '~> 2.0.0'
 
+# textarea wysiwyg
+gem 'tinymce-rails'
+
 # per heroku
 gem 'rails_12factor'
 
