@@ -5,6 +5,7 @@ class WikiTagsController < ApplicationController
   # GET /wiki_tags.json
   def index
     @wiki_tags = WikiTag.all
+    #raise @wiki_tags.inspect
   end
 
   # GET /wiki_tags/1
