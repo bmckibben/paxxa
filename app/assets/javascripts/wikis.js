@@ -248,7 +248,7 @@ function addTag(wiki_id,tag_id,tag_name) {
 	.success(function(data){
 		id = data;
 		addTagToTray(id, tag_id, tag_name);
-		$("#input-tag").value("");
+		$("#input-tag").val("");
 	})
 	.fail(function(){ alert("Failed to add tag.")});
 	return id;
