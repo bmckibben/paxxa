@@ -1,9 +1,5 @@
 module WikisHelper
 
-	def getWikiMenu(id)
-		return "TOC for #{id.to_s}"
-	end	
-
   def nested_set(nested_set_query)
 
     current_level = 1
@@ -12,31 +8,25 @@ module WikisHelper
     menu = "<ul class='nav nav-list'>"
     tree_toggler = "<i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i>"
 
-
     nested_set_query.each do |link|
 
       if current_level < link.path.length
         menu += " <ul class='nav nav-list tree'>"
       elsif current_level > link.path.length
         menu += "</li></ul>" * (current_level-link.path.length)
-        
       elsif !first_item  
         menu += "</li>"
       else  
         first_item = false
       end
 
-      
-
       menu += "<li>#{tree_toggler}<a href='javascript:void(0);' data-wiki-id='#{link.id}' class='tree-menu'>#{link.title}</a>"
-
       current_level = link.path.length
+
     end  
 
     menu += "</li>"
     menu += ("</ul>" * current_level)
-
-
 
     return menu
 
