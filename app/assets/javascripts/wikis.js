@@ -211,14 +211,14 @@ function getWiki(id){
     return wikiHTML
 };
 
-function getForm(id, type=""){
+function getForm(id,wiki_type){
 
 var form;
 
   $.ajax(
     {   url: "/wikis/wiki_form", 
         method: "get",
-        data: {"wiki_id": id, "type": type }, 
+        data: {"wiki_id": id, "wiki_type": wiki_type }, 
         dataType: "html" ,
         async: false
     })

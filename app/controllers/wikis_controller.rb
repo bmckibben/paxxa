@@ -5,7 +5,7 @@ class WikisController < ApplicationController
   # GET /wikis.json
   def index
     @wikis = Wiki.where(parent: nil).order(updated_at: :desc)
-    @menu = nested_set_menu
+    @menu = view_context.nested_set(view_context.query_menu)
     #might change recents to where < one month?
     @recents = Wiki.all.order(updated_at: :desc).limit(100)
   end
@@ -81,7 +81,7 @@ class WikisController < ApplicationController
       @wiki = Wiki.new
     end
 
-    if params[:type] == "j"
+    if params[:wiki_type] == "j"
       @wiki.title = Time.now.to_formatted_s(:stardate)
     end  
 
@@ -100,61 +100,6 @@ class WikisController < ApplicationController
     end 
   end 
 
-  def nested_set_menu
-    nested_set = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, path) AS (
-
-      select wikis.id, ARRAY[wikis.id]
-      from wikis left outer join wiki_tags on wikis.id = wiki_tags.wiki_id
-      where wiki_tags.tag_id is null
-
-      UNION ALL
-      SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id
-      FROM category_tree
-      JOIN wiki_tags ON wiki_tags.tag_id=category_tree.id
-      WHERE NOT wiki_tags.wiki_id = ANY(path)
-      )
-
-
-      SELECT category_tree.*, wikis.title 
-      FROM category_tree 
-            right outer join wikis on category_tree.id = wikis.id
-      ORDER BY path")
-
-    current_level = 1
-    first_item = true
-      
-    menu = "<ul class='nav nav-list'>"
-    tree_toggler = "<i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i>"
-
-
-    nested_set.each do |link|
-
-      if current_level < link.path.length
-        menu += " <ul class='nav nav-list tree'>"
-      elsif current_level > link.path.length
-        menu += "</li></ul>" * (current_level-link.path.length)
-        
-      elsif !first_item  
-        menu += "</li>"
-      else  
-        first_item = false
-      end
-
-      
-
-      menu += "<li>#{tree_toggler}<a href='javascript:void(0);' data-wiki-id='#{link.id}' class='tree-menu'>#{link.title}</a>"
-
-      current_level = link.path.length
-    end  
-
-    menu += "</li>"
-    menu += ("</ul>" * current_level)
-
-
-
-    return menu
-
-  end
 
   private
 
@@ -180,4 +125,7 @@ class WikisController < ApplicationController
     def wiki_params
       params.require(:wiki).permit(:title, :user_id, :body, :parent, :version, :deleted)
     end
+
+
+
 end

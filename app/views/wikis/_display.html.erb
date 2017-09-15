@@ -23,6 +23,9 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12 wiki-body">
+              <% if wiki.body.include? "{{TOC}}" %>  
+                <% wiki.body["{{TOC}}"] = nested_set(query_toc(wiki.id)) %>
+              <% end %>
               <%= wiki.body.html_safe %>
               </div>
             </div>
