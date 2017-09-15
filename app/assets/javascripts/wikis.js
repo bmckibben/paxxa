@@ -32,7 +32,7 @@ function checkExisting(check_id){
 
 // display wikis --------------------------------------------------------------
 
-// get and display wiki in existing div
+// get and display wiki in existing div 
 function reDisplayWiki(id){
 
 	var wiki = getWiki(id);

@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   get 'users/whoami' => 'users#whoami'
 
   resources :wikis
+  resources :users
 
 end
