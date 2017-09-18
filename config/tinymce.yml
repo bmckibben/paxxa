@@ -1,6 +1,6 @@
 menubar: false
 toolbar:
-  - undo redo |  styleselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | image | link | charmap | help
+  - undo redo |  styleselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat | image | link | charmap | help
 plugins:
   - image
   - link
