@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top">
-  <div style="padding-left:7rem;position:fixed;margin-top:50px;height:1.5rem;" >
-  	<p class=" sidebar-date pull-right">Today is <%= DateTime.now.in_time_zone('Indiana (East)').to_formatted_s(:stardate) %> &nbsp;&nbsp;
-    <i aria-hidden="false" class="fa fa-chevron-right sidebar-toggle"  data-toggle='tooltip' data-placement='left' title='Show/Hide Sidebar.'></i></p>
+  <div class=" sidebar-date pull-right">
+  	Today is <%= DateTime.now.in_time_zone('Indiana (East)').to_formatted_s(:stardate) %> &nbsp;&nbsp;
+    <i aria-hidden="false" class="fa fa-chevron-right sidebar-toggle"  data-toggle='tooltip' data-placement='left' title='Show/Hide Sidebar.'></i>
   </div>
 </nav>
 <div class="row" id="row-main">

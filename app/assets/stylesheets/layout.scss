@@ -4,7 +4,7 @@ html, body {
 
 main {
   // @extend .container;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
   width: 100%;
   min-height: 100%;
   //padding-left: 20px;
@@ -390,7 +390,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', end
     height: 50px;
     padding-left: 2em;
     position: relative;
-    margin-top: 2rem;
+   /* margin-top: 2rem;*/
 }
 
 .glossary-word {
@@ -406,6 +406,3 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', end
   margin-left: 0.5rem;
 }
 
-div.mce-fullscreen {
-  top: 80 !important;
-}
