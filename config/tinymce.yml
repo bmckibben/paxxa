@@ -1,7 +1,11 @@
+themes: modern
 menubar: false
-toolbar:
-  - undo redo |  styleselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat | image | link | charmap | help
 plugins:
   - image
   - link
   - charmap
+  - advlist
+  - fullscreen
+  - save
+toolbar:
+  - save | undo redo | fullscreen | styleselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist outdent indent | removeformat | image | link | charmap | help

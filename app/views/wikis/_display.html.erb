@@ -34,7 +34,7 @@
             <div class="row">
               <div class="col-md-12 wiki-attributes">
               Author: <%= wiki.user.login if !wiki.user.nil? %> (version: <%= wiki.version %> <%= "deleted" if wiki.deleted? %>) | ID: <%= wiki.id %> |
-              Created:  <%= wiki.created_at.to_formatted_s(:stardatetime) %> | Updated: <%= wiki.updated_at.to_formatted_s(:stardatetime) %> <br/>
+              Created:  <%= wiki.created_at.in_time_zone('Indiana (East)').to_formatted_s(:stardatetime) %> | Updated: <%= wiki.updated_at.in_time_zone('Indiana (East)').to_formatted_s(:stardatetime) %> <br/>
             </div>
             </div>
           </div>
