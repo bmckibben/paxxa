@@ -53,7 +53,7 @@ function insertOnly(formHTML,divID){
 
 	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+formHTML+'</div>';
 	$("#main").html(insertHTML);
-	//bindDisplayActionIcons();
+	bindDisplayActionIcons();
 
 };	//insertAtTop
 
@@ -146,11 +146,16 @@ function bindDisplayActionIcons() {
 
     $('a.wiki-menu').click(function () {
        	// view a wiki not on the page
-		//insertAtTop(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
-		showAfterWiki(getWiki($(this).data('wiki-id')),  $(this).data("parent-id"), $(this).data('wiki-id'));
+		//abort if already displayed
+		if (!checkExisting($(this).data('wiki-id'))){
+			showAfterWiki(getWiki($(this).data('wiki-id')),  $(this).data("parent-id"), $(this).data('wiki-id'));
+		} else {	
+			$('html,body').animate({ scrollTop: $("#"+$(this).data('wiki-id')).offset().top-100});
+		};
     });
 
 	$('[data-toggle="tooltip"]').tooltip();
+
 
 }	
 
@@ -210,7 +215,7 @@ function bindSidebarActions() {
         	// view a wiki not on the page
         	$(".wiki-panel").remove();	
 			insertOnly(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
-			bindDisplayActionIcons();
+			//bindDisplayActionIcons(214);
         // }
     });
 
