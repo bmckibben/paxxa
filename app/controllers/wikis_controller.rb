@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.where(parent: nil).order(updated_at: :desc)
+    @wikis = Wiki.where("parent > 0").order(parent: :desc)
     @menu = view_context.nested_set(view_context.query_menu)
     #might change recents to where < one month?
     @recents = Wiki.all.order(updated_at: :desc).limit(100)
@@ -34,7 +34,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(wiki_params)
     @wiki.user_id = current_user.id
     @wiki_id = 0
-
+    @wiki.parent = 0
     respond_to do |format|    
       if @wiki.save
         create_parent_tag(@wiki)

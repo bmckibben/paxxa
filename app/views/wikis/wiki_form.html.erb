@@ -29,7 +29,9 @@
           <i aria-hidden="false" class="fa fa-window-close-o action-icon" id="wiki-cancel" data-toggle='tooltip' data-placement='bottom' title='Close wiki without saving.'></i>
           <i aria-hidden="false" class="fa fa-trash action-icon wiki-delete" data-id="<%= @wiki.id %>" data-toggle='tooltip' data-placement='bottom' title='Inactivate this wiki.'></i>
         </div>
-    </div>  
+    </div>    
+  </div>
+  <div class="panel-body">            
     <%= f.label "Tags" %>
     <div class="row">
       <div class="col-md-4 col-sm-12">
@@ -49,14 +51,19 @@
           <% end %>
         <% end %>
       </div>
-    </div>  
-  </div>
-  <div class="panel-body">            
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <div class="input-group" style="max-width:300px;">
+        <%= f.label :"Show on Home Screen" %>
+        <%= f.text_field :parent, class: "form-control" %>
+        </div>
+      </div>  
+    </div>    
     <div class="row">
       <div class="col-md-12 wiki-body">
         <%= f.label :body %>
         <%= f.text_area :body, class: "tinymce form-control" %>
-        <%= f.hidden_field :parent %>
         <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
       </div>
     </div>
