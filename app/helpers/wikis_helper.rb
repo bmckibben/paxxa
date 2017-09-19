@@ -9,7 +9,7 @@ module WikisHelper
     tree_toggler = "<i class='tree-toggler nav-header fa fa-chevron-right' aria-hidden='true'></i>"
 
     nested_set_query.each do |link|
-
+      if !link.id.nil? and !link.path.nil?
       if current_level < link.path.length
         menu += " <ul class='nav nav-list tree'>"
       elsif current_level > link.path.length
@@ -19,7 +19,7 @@ module WikisHelper
       else  
         first_item = false
       end
-
+      end
       menu += "<li>#{tree_toggler}<a href='javascript:void(0);' data-wiki-id='#{link.id}' data-parent-id='#{parent_id}' class='#{link_class}'>#{link.title}</a>"
       current_level = link.path.length
 
