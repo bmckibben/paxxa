@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :wiki_tags
-  resources :admins
+
   devise_for :users
   root 'home#index'
 
@@ -20,9 +19,11 @@ Rails.application.routes.draw do
   get 'wikis/test' => 'wikis#test'
   post 'wiki_tags/delete_wiki_tag' => 'wiki_tags#delete_wiki_tag'
   post 'wiki_tags/new_wiki_tag' => 'wiki_tags#new_wiki_tag'
+  get 'wiki_tags/menu' => 'wiki_tags#menu'
   get 'users/whoami' => 'users#whoami'
 
   resources :wikis
   resources :users
-
+  resources :wiki_tags
+  resources :admins
 end
