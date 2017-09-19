@@ -5,7 +5,7 @@ class WikisController < ApplicationController
   # GET /wikis.json
   def index
     @wikis = Wiki.where("parent > 0").order(parent: :desc)
-    @menu = view_context.nested_set(view_context.query_menu)
+    @menu = view_context.nested_set(view_context.query_menu,'tree-menu', 0)
     #might change recents to where < one month?
     @recents = Wiki.all.order(updated_at: :desc).limit(100)
   end

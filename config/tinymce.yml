@@ -1,5 +1,5 @@
 themes: modern
-menubar: false
+menubar: true
 plugins:
   - image
   - link

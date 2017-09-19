@@ -49,6 +49,13 @@ function editInPlace(formHTML, divID){
 
 }; //editInPlace
 
+function insertOnly(formHTML,divID){
+
+	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+formHTML+'</div>';
+	$("#main").html(insertHTML);
+	//bindDisplayActionIcons();
+
+};	//insertAtTop
 
 function insertAtTop(formHTML,divID){
 
@@ -68,6 +75,13 @@ function insertAfterWiki(wikiHTML, parentID, divID, parentName){
 
 }; //insertAfterWiki
 
+function showAfterWiki(wikiHTML, parentID, divID){
+
+	insertHTML = '<div class="panel panel-default wiki-panel" id="'+divID+'" >'+wikiHTML+'</div>';
+	$("#"+parentID).after(insertHTML);
+	bindDisplayActionIcons();
+
+}; //showAfterWiki
 
 function addTagToTray(id, tag_id, tagName){
 
@@ -76,7 +90,7 @@ function addTagToTray(id, tag_id, tagName){
 		$("#tag-tray").append(tagAnchor);
 
 	};
-};
+}; //addTagToTray
 
 // click binders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function bindDisplayActionIcons() {
@@ -128,6 +142,13 @@ function bindDisplayActionIcons() {
 	$(".wiki-remove").on("click", function() {
 			$("#"+$(this).data("id")).remove();	
 	});	
+
+
+    $('a.wiki-menu').click(function () {
+       	// view a wiki not on the page
+		//insertAtTop(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
+		showAfterWiki(getWiki($(this).data('wiki-id')),  $(this).data("parent-id"), $(this).data('wiki-id'));
+    });
 
 	$('[data-toggle="tooltip"]').tooltip();
 
@@ -182,14 +203,15 @@ function bindSidebarActions() {
 
     $('a.tree-menu').click(function () {
 
-        if (checkExisting($(this).data('wiki-id'))) {
-        	// view a wiki already on the page
-        	$('html,body').animate({ scrollTop: $("#"+$(this).data('wiki-id')).offset().top-70});
-        } else {
+        // if (checkExisting($(this).data('wiki-id'))) {
+        // 	// view a wiki already on the page
+        // 	$('html,body').animate({ scrollTop: $("#"+$(this).data('wiki-id')).offset().top-70});
+        // } else {
         	// view a wiki not on the page
-			insertAtTop(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
+        	$(".wiki-panel").remove();	
+			insertOnly(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
 			bindDisplayActionIcons();
-        }
+        // }
     });
 
 

@@ -1,6 +1,6 @@
 module WikisHelper
 
-  def nested_set(nested_set_query)
+  def nested_set(nested_set_query,link_class, parent_id)
 
     current_level = 1
     first_item = true
@@ -20,7 +20,7 @@ module WikisHelper
         first_item = false
       end
 
-      menu += "<li>#{tree_toggler}<a href='javascript:void(0);' data-wiki-id='#{link.id}' class='tree-menu'>#{link.title}</a>"
+      menu += "<li>#{tree_toggler}<a href='javascript:void(0);' data-wiki-id='#{link.id}' data-parent-id='#{parent_id}' class='#{link_class}'>#{link.title}</a>"
       current_level = link.path.length
 
     end  
