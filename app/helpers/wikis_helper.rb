@@ -19,10 +19,9 @@ module WikisHelper
       else  
         first_item = false
       end
-      end
       menu += "<li>#{tree_toggler}<a href='javascript:void(0);' data-wiki-id='#{link.id}' data-parent-id='#{parent_id}' class='#{link_class}'>#{link.title}</a>"
       current_level = link.path.length
-
+      end
     end  
 
     menu += "</li>"
