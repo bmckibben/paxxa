@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'home#index'
+  root 'wikis#index'
 
   get 'static_pages/about', :as => 'static_about'
   get 'static_pages/help', :as => 'static_help'
