@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.where("parent > 0").order(parent: :desc)
+    @wikis = Wiki.where("default_sort > 0").order(default_sort: :asc)
     @menu = view_context.nested_set(view_context.query_menu,'tree-menu', 0)
     #might change recents to where < one month?
     @recents = Wiki.all.order(updated_at: :desc).limit(100)
@@ -34,7 +34,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(wiki_params)
     @wiki.user_id = current_user.id
     @wiki_id = 0
-    @wiki.parent = 0
+    
     respond_to do |format|    
       if @wiki.save
         create_parent_tag(@wiki)
@@ -123,7 +123,7 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:title, :user_id, :body, :parent, :version, :deleted)
+      params.require(:wiki).permit(:title, :user_id, :body, :parent, :version, :deleted, :default_sort)
     end
 
 

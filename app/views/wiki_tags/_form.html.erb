@@ -1,0 +1,29 @@
+<%= form_for(@wiki_tag) do |f| %>
+  <% if @wiki_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wiki_tag.errors.count, "error") %> prohibited this wiki_tag from being saved:</h2>
+
+      <ul>
+      <% @wiki_tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br>
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :wiki_id %><br>
+    <%= f.number_field :wiki_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_id %><br>
+    <%= f.number_field :tag_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

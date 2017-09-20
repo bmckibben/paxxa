@@ -21,7 +21,11 @@
                 </div>
                 <div class="col-md-6 wiki-actions right">
                   <button name="commit" type="submit" class="btn-transparent"><i aria-hidden="false" class="fa fa-check-square-o action-icon"></i></button>
-                  <%= link_to wikis_path do %><i aria-hidden="false" class="fa fa-window-close-o"></i><% end %>
+                  
+                  <%=link_to @wiki, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i aria-hidden="false" class="fa fa-trash" style="font-size:2rem;color:red;"></i>
+                  <% end %>
+
                 </div>  
             </div>
             <div class="row wiki-body">
@@ -34,4 +38,3 @@
             </div>
           </div>
 <% end %>          
-<%= tinymce %> 

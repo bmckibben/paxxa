@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @wiki_tag.id %>
+</p>
+
+<p>
+  <strong>Wiki:</strong>
+  <%= @wiki_tag.wiki_id %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @wiki_tag.tag_id %>
+</p>
+
+<%= link_to 'Edit', edit_wiki_tag_path(@wiki_tag) %> |
+<%= link_to 'Back', wiki_tags_path %>
