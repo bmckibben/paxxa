@@ -19,6 +19,9 @@
                 <div class="col-md-6 wiki-tags">
                  <%= f.label :parent %><%= f.text_field :parent %>
                 </div>
+                <div class="col-md-6 wiki-tags">
+                 <%= f.label :default_sort %><%= f.text_field :default_sort %>
+                </div>                
                 <div class="col-md-6 wiki-actions right">
                   <button name="commit" type="submit" class="btn-transparent"><i aria-hidden="false" class="fa fa-check-square-o action-icon"></i></button>
                   
@@ -29,7 +32,8 @@
                 </div>  
             </div>
             <div class="row wiki-body">
-              <%= f.text_area :body, class: "tinymce" %> %>
+              <%= f.label :body %>
+              <%= f.text_area :body, class: "tinymce" %>
             </div>
           </div>            
           <div class="panel-footer">  

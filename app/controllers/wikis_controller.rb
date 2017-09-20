@@ -28,6 +28,10 @@ class WikisController < ApplicationController
      @wikis = WikiTag.all
   end
 
+  def wikilist
+     @wikis = Wiki.all
+  end
+
   # POST /wikis
   # POST /wikis.json
   def create

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'wikis/wiki_form' => 'wikis#wiki_form'
   get 'wikis/re_display' => 'wikis#re_display'
   get 'wikis/test' => 'wikis#test'
+  get 'wikis/wikilist' => 'wikis#wikilist'
   post 'wiki_tags/delete_wiki_tag' => 'wiki_tags#delete_wiki_tag'
   post 'wiki_tags/new_wiki_tag' => 'wiki_tags#new_wiki_tag'
   get 'wiki_tags/menu' => 'wiki_tags#menu'

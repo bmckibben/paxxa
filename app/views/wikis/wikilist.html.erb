@@ -1,0 +1,51 @@
+<div class="row" style="margin-top:40px;">
+<div class="col-md-8 col-md-offset-2 col-xs-12  white-scroller" >
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wiki Tags</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>User</th>
+      <th>Parent</th>
+      <th>Version</th>
+      <th>Deleted</th>
+      <th>Created</th>
+      <th>Updated</th>
+      <th>Last Revision</th>
+      <th>Default Sort</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wikis.each do |wiki| %>
+      <tr>
+        <td><%= wiki.id %></td>
+        <td><%= wiki.title %></td>
+        <td><%= wiki.user_id %></td>
+        <td><%= wiki.parent %></td>
+        <td><%= wiki.version %></td>
+        <td><%= wiki.deleted %></td>
+        <td><%= wiki.created_at %></td>
+        <td><%= wiki.updated_at %></td>
+        <td><%= wiki.last_revision %></td>
+        <td><%= wiki.default_sort %></td>
+        <td><%= link_to 'Show', wiki %></td>
+        <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>
+        <td><%= link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wiki tag', new_wiki_tag_path %>
+
+</div>
+</div>
