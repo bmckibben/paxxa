@@ -7,12 +7,14 @@
        <i aria-hidden="false" class="fa fa-home action-icon" id="wiki-home"  data-toggle='tooltip' data-placement='bottom' title='Display home wikis.'></i>
     <% end %>    
   </p> 
-
+  <%= form_tag(wikis_search_path, id: "search-form", method: :get) do %>
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="search" aria-label="Search" aria-describedby="basic-addon2">
-    <span class="input-group-addon" id="basic-addon2"><i aria-hidden="false" class="fa fa-search action-icon" id="wiki-new" data-toggle='tooltip' data-placement='bottom' title='Search wiki contents.'></i></span>
-  </div>        
-
+    <input type="text" class="form-control" placeholder="search" aria-label="Search" aria-describedby="wiki-search" name="search_text">
+    <span class="input-group-addon" id="wiki-search">
+      <i aria-hidden="false" class="fa fa-search action-icon" data-toggle='tooltip' data-placement='bottom' title='Search wiki contents.'></i>
+    </span>
+  </div>   
+  <% end %>
   <ul class="nav nav-tabs" id="sidebarTabs">
     <li class="active"><a data-target="#menu" data-toggle="tab">Menu</a></li> 
     <li><a data-target="#open" data-toggle="tab">Open</a></li> 

@@ -204,6 +204,10 @@ function bindSidebarActions() {
         $(this).toggleClass('fa-chevron-right fa-chevron-down')
     });
 
+    $('#wiki-search').click(function () {
+        $('#search-form').submit();
+    });    
+
     $(".tree").hide();
 
     $('a.tree-menu').click(function () {

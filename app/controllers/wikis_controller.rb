@@ -28,6 +28,26 @@ class WikisController < ApplicationController
      @wikis = WikiTag.all
   end
 
+  def search
+
+    if params[:search_text].present?
+      @keywords = params[:search_text]
+      wiki_search_term = WikiSearchTerm.new(@keywords)
+      @wikis = Wiki.where(
+      wiki_search_term.where_clause,
+      wiki_search_term.where_args).
+      order(wiki_search_term.order)
+    else
+      @wikis = []
+    end
+
+
+    @menu = view_context.nested_set(view_context.query_menu,'tree-menu', 0)
+    #might change recents to where < one month?
+    @recents = Wiki.all.order(updated_at: :desc).limit(100)
+    render template: "wikis/index"
+  end  
+
   def wikilist
      @wikis = Wiki.all
   end
