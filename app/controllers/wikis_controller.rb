@@ -58,7 +58,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(wiki_params)
     @wiki.user_id = current_user.id
     @wiki_id = 0
-    
+
     respond_to do |format|    
       if @wiki.save
         create_parent_tag(@wiki)
@@ -92,13 +92,15 @@ class WikisController < ApplicationController
   def destroy
     @wiki.destroy
     respond_to do |format|
-      format.html { redirect_to wikis_url, notice: 'Wiki was successfully destroyed.' }
+      format.html { redirect_to wikis_wikilist_url, notice: 'Wiki was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def wiki_form
     @wikis = Wiki.all.order(title: :asc)
+    @new_journal = false
+
     if params[:wiki_id] != "0"
       @wiki = Wiki.find(params[:wiki_id])
     else
@@ -107,6 +109,7 @@ class WikisController < ApplicationController
 
     if params[:wiki_type] == "j"
       @wiki.title = Time.now.to_formatted_s(:stardate)
+      @new_journal = true
     end  
 
     respond_to do |format|
@@ -144,16 +147,21 @@ class WikisController < ApplicationController
   private
 
     def create_parent_tag(wiki)
-      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-      puts wiki.parent
-      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       if !wiki.parent.nil?
-        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        puts wiki.id
-        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         wiki_tag = WikiTag.new({:wiki_id => wiki.id, :tag_id => wiki.parent})
         wiki_tag.save
+      elsif wiki.title.match('\d{4}\.')
+        journal = Wiki.where("title = 'Journal'").first
+        #raise journal.inspect
+        if !journal.nil?
+          wiki_tag = WikiTag.new({:wiki_id => wiki.id, :tag_id => journal.id})
+          wiki_tag.save            
+        end
+      else
+        Rails.log.info("No tag for you!")  
+        Rails.log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")  
       end
+
     end  
 
     # Use callbacks to share common setup or constraints between actions.
