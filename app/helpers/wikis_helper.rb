@@ -36,7 +36,7 @@ module WikisHelper
 
       select wikis.id, ARRAY[wikis.id]
       from wikis left outer join wiki_tags on wikis.id = wiki_tags.wiki_id
-      where wiki_tags.tag_id is null
+      where wiki_tags.tag_id is null and (wikis.deleted is null or wikis.deleted is false)
 
       UNION ALL
       SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id
@@ -57,7 +57,7 @@ module WikisHelper
 
       select wikis.id, ARRAY[wikis.id]
       from wikis left outer join wiki_tags on wikis.id = wiki_tags.wiki_id
-      where wiki_tags.tag_id = #{id}
+      where wiki_tags.tag_id = #{id} and (wikis.deleted is null or wikis.deleted is false)
       UNION ALL
       SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id
       FROM category_tree

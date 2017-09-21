@@ -140,7 +140,7 @@ function bindDisplayActionIcons() {
 	});
 
 	$(".wiki-remove").on("click", function() {
-			$("#"+$(this).data("id")).remove();	
+		$("#"+$(this).data("id")).remove()
 	});	
 
 
@@ -186,10 +186,9 @@ function bindEditActionIcons(thisID) {
 	});	
 
 	$(".wiki-delete").on("click", function() {
-		if(confirm("Are you sure you want to delete this wiki?")){
-			$("#"+$(this).data("id")).remove();
-			// just remove for now, eventually move to archive
-		}		
+		if(confirm("Are you sure you want to disable this wiki?")){
+			setDisableFlag($(this).data("id"));
+		};		
 	});
 
 	$('[data-toggle="tooltip"]').tooltip();	
@@ -197,7 +196,6 @@ function bindEditActionIcons(thisID) {
 }
 
 function bindSidebarActions() {
-
 
     $('i.tree-toggler').click(function () {
         $(this).parent().children('ul.tree').toggle(300);
@@ -211,19 +209,9 @@ function bindSidebarActions() {
     $(".tree").hide();
 
     $('a.tree-menu').click(function () {
-
-        // if (checkExisting($(this).data('wiki-id'))) {
-        // 	// view a wiki already on the page
-        // 	$('html,body').animate({ scrollTop: $("#"+$(this).data('wiki-id')).offset().top-70});
-        // } else {
-        	// view a wiki not on the page
-        	$(".wiki-panel").remove();	
-			insertOnly(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
-			//bindDisplayActionIcons(214);
-        // }
+    	$(".wiki-panel").remove();	
+		insertOnly(getWiki($(this).data('wiki-id')), $(this).data('wiki-id'));
     });
-
-
 
 }
 
@@ -284,3 +272,13 @@ function addTag(wiki_id,tag_id,tag_name) {
 	.fail(function(){ alert("Failed to add tag.")});
 	return id;
 }; // deleteTag
+
+function setDisableFlag(id){
+  $.ajax(
+    {   url: "/wikis/wiki_disable", 
+        method: "post",
+        data: {"wiki_id": id }
+    })
+    .done($("#"+id).remove())
+    .fail(function(){ alert("Failed to remove wiki.")});	
+};

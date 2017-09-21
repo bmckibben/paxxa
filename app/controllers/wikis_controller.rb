@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.where("default_sort > 0").order(default_sort: :asc)
+    @wikis = Wiki.where("default_sort > 0 and (deleted is null or deleted is false)").order(default_sort: :asc)
     @menu = view_context.nested_set(view_context.query_menu,'tree-menu', 0)
     #might change recents to where < one month?
     @recents = Wiki.all.order(updated_at: :desc).limit(100)
@@ -124,6 +124,22 @@ class WikisController < ApplicationController
     end 
   end 
 
+  def wiki_disable
+    
+    wiki = Wiki.find(params[:wiki_id]);
+    wiki.deleted = true;
+
+    respond_to do |format|
+      if wiki.save
+        format.html { render nothing: true }
+        format.js { render nothing: true }
+      else
+        format.html { render nothing: true }
+        format.js { render nothing: true }
+      end
+    end
+
+  end
 
   private
 

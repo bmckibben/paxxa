@@ -21,7 +21,10 @@
                 </div>
                 <div class="col-md-6 wiki-tags">
                  <%= f.label :default_sort %><%= f.text_field :default_sort %>
-                </div>                
+                </div>
+                <div class="col-md-6 wiki-tags">
+                 <%= f.label :deleted %><%= f.check_box :deleted %>
+                </div>                                  
                 <div class="col-md-6 wiki-actions right">
                   <button name="commit" type="submit" class="btn-transparent"><i aria-hidden="false" class="fa fa-check-square-o action-icon"></i></button>
                   
