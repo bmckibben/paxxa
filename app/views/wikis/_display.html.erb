@@ -25,6 +25,10 @@
               <div class="col-md-12 wiki-body">
               <% if wiki.body.include? "{{TOC}}" %>  
                 <% wiki.body["{{TOC}}"] = nested_set(query_toc(wiki.id),'wiki-menu', wiki.id) %>
+                <% showMe = query_toc(wiki.id) %>
+                <% showMe.each do |isit| %>
+                   <%= isit.path %><br/>
+                <% end %>    
               <% end %>
               <%= wiki.body.html_safe %>
               </div>
