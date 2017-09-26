@@ -14,24 +14,7 @@ class WikiTagsController < ApplicationController
   end
 
   def menu
-    @wiki_menu = Wiki.find_by_sql("WITH RECURSIVE category_tree(id, path) AS (
-
-      select wikis.id, ARRAY[wikis.id]
-      from wikis left outer join wiki_tags on wikis.id = wiki_tags.wiki_id
-      where wiki_tags.tag_id is null
-
-      UNION ALL
-      SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id
-      FROM category_tree
-      JOIN wiki_tags ON wiki_tags.tag_id=category_tree.id
-      WHERE NOT wiki_tags.wiki_id = ANY(path)
-      )
-
-
-      SELECT category_tree.id,category_tree.path, wikis.title 
-      FROM category_tree 
-            RIGHT OUTER JOIN wikis on category_tree.id = wikis.id
-      ORDER BY path")
+    @wiki_menu = view_context.query_menu
   end
 
   # GET /wiki_tags/new

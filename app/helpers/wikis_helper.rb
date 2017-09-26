@@ -32,45 +32,49 @@ module WikisHelper
   end
 
     def query_menu
-      Wiki.find_by_sql("WITH RECURSIVE category_tree(id, path) AS (
+      Wiki.find_by_sql("WITH RECURSIVE category_tree(id, path, my_sort) AS (
 
-      select wikis.id, ARRAY[wikis.id]
+      select wikis.id, ARRAY[wikis.id], ARRAY[wikis.default_sort]
       from wikis left outer join wiki_tags on wikis.id = wiki_tags.wiki_id
       where wiki_tags.tag_id is null and (wikis.deleted is null or wikis.deleted is false)
 
       UNION ALL
-      SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id
+      SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id, my_sort || wikis.default_sort
       FROM category_tree
       JOIN wiki_tags ON wiki_tags.tag_id=category_tree.id
+      JOIN wikis ON wikis.id=wiki_tags.wiki_id
       WHERE NOT wiki_tags.wiki_id = ANY(path)
       )
 
 
-      SELECT category_tree.*, wikis.title 
+      SELECT category_tree.*, wikis.title, wikis.default_sort 
       FROM category_tree 
             RIGHT OUTER JOIN wikis on category_tree.id = wikis.id
-      ORDER BY path")
+      ORDER BY my_sort")
     end  
 
     def query_toc(id)
-      Wiki.find_by_sql("WITH RECURSIVE category_tree(id, path) AS (
+      Wiki.find_by_sql("WITH RECURSIVE category_tree(id, path, my_sort) AS (
 
-      select wikis.id, ARRAY[wikis.id]
+      select wikis.id, ARRAY[wikis.id], ARRAY[wikis.default_sort]
       from wikis left outer join wiki_tags on wikis.id = wiki_tags.wiki_id
       where wiki_tags.tag_id = #{id} and (wikis.deleted is null or wikis.deleted is false)
+
       UNION ALL
-      SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id
+      SELECT wiki_tags.wiki_id as id, path || wiki_tags.wiki_id, my_sort || wikis.default_sort
       FROM category_tree
       JOIN wiki_tags ON wiki_tags.tag_id=category_tree.id
+      JOIN wikis ON wikis.id=wiki_tags.wiki_id
       WHERE NOT wiki_tags.wiki_id = ANY(path)
       )
 
 
-      SELECT category_tree.*, wikis.title 
+      SELECT category_tree.*, wikis.title, wikis.default_sort 
       FROM category_tree 
-          JOIN wikis on category_tree.id = wikis.id
-      ORDER BY path")
+            RIGHT OUTER JOIN wikis on category_tree.id = wikis.id
+      ORDER BY my_sort")
     end 
 
 
 end
+

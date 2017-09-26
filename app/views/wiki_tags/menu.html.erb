@@ -1,5 +1,5 @@
 <% @wiki_menu.each do |tag| %>
-	ID: <%= tag.id %>  | Title: <%= tag.title %> | Path: <%= tag.path.inspect %><br/>
+	ID: <%= tag.id %>  | Title: <%= tag.title %> | Path: <%= tag.path.inspect %> | Sort: <%= tag.my_sort.inspect %> | Default Sort: <%= tag.default_sort %><br/>
 	<hr>
 <% end %>
 
