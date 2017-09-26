@@ -62,6 +62,9 @@ class WikisController < ApplicationController
     respond_to do |format|    
       if @wiki.save
         create_parent_tag(@wiki)
+        if @wiki.default_sort == 0
+          @wiki.update(:default_sort => @wiki.id)
+        end
         format.html { redirect_to wikis_url, notice: 'Wiki was successfully created.' }
         format.js { render "wikis/display" }
       else
