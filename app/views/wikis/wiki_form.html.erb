@@ -1,4 +1,4 @@
-<%= tinymce_assets %>
+
 <datalist id="tag_list">
   <% @wikis.each do |tag| %>
   <option value="<%=tag.id%>"><%= tag.title %></option>
@@ -66,7 +66,8 @@
     <div class="row">
       <div class="col-md-12 wiki-body">
         <%= f.label :body %>
-        <%= f.text_area :body, class: "tinymce form-control" %>
+        <%= f.hidden_field :body, id: :wiki_body %>
+        <trix-editor input="wiki_body"></trix-editor>
         <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
         <%= f.hidden_field :parent %>
       </div>
@@ -81,4 +82,4 @@
     </div>
   </div>
 <% end %>     
-<%= tinymce %>     
+   

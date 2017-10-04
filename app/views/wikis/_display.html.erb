@@ -26,7 +26,7 @@
               <% if wiki.body.include? "{{TOC}}" %>  
                 <% wiki.body["{{TOC}}"] = nested_set(query_toc(wiki.id),'wiki-menu', wiki.id) %>   
               <% end %>
-              <%= wiki.body.html_safe %>
+              <%=  wiki.body.html_safe %>
               </div>
             </div>
           </div>            

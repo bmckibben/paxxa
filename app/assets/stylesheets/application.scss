@@ -12,14 +12,14 @@
  *
  */
 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+@import "trix";
 @import "bootstrap_overrides";
 @import "layout";
 @import "static_pages";
 @import "wikis";
-@import "tinymce";

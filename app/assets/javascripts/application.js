@@ -15,5 +15,5 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap-sprockets
-//= require tinymce-jquery
+//= require trix
 //= require_tree .
