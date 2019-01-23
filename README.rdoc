@@ -1,3 +1,0 @@
-== README
----
-This is my attempt to create a Ruby on Rails version of TiddlyWiki http://tiddlywiki.com/
