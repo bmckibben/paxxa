@@ -1,0 +1,11 @@
+.modal-dialog.edit-note-modal
+	.modal-content
+		%button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: :button, class: "btn-dialog-close" }
+			X
+		.modal-body
+			= simple_form_for @note, url: "/sections/#{@section_id}", method: :patch, remote: true do |f|
+				=f.input :note	
+				.modal-footer
+					= f.hidden_field :id, value: @section_id  
+					= f.submit 'Save', class: 'btn btn-primary right'
+						           			   

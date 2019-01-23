@@ -1,0 +1,56 @@
+// ----------------------------------------------------------------------
+//== Contacts
+//
+//##
+//
+// Place appropriate project related styles and overrides here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//
+// --------------------------------------------------
+
+body {
+
+  .edit_section {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #e6e6e6;
+    .section_title {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .section_summary textarea {
+      font-style: italic;
+    }
+    .section_body textarea {
+      font-family: Arvo, Rokkit, Courier New;
+    }
+    .card {
+      font-family: Arvo, Rokkit, Courier New;
+    }
+    .section_notes {
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+    .footnotes {
+      font-size: 1rem;
+      background-color: #fff;
+    }
+    label {
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: 0.8rem;
+    }
+    .editor {
+      background-color: #fff;
+    }
+  }
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+
+} // /body

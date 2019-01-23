@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @section.title
+%p
+  %b Sequence:
+  = @section.sequence
+%p
+  %b Summary:
+  = @section.summary
+%p
+  %b Body:
+  = @section.body
+%p
+  %b Throughline:
+  = @section.throughline
+%p
+  %b Resolution:
+  = @section.resolution
+%p
+  %b Conflict:
+  = @section.conflict
+
+= link_to 'Edit', edit_section_path(@section)
+\|
+= link_to 'Back', sections_path

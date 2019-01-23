@@ -1,0 +1,18 @@
+%h1 Sections
+
+%table
+  %tr
+    %th Sequence
+    %th Title    
+    %th Summary
+    %th 
+      = link_to 'New Section', new_section_path
+  - @sections.each do |section|
+    %tr
+      %td= section.sequence
+      %td= link_to section.title, edit_section_path(section)
+      %td= section.summary
+      %td
+%br
+
+

@@ -1,0 +1,44 @@
+= simple_form_for(@section) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-xs-12
+        = f.input :title
+    .row
+      .col-md-2.attributes    
+        = f.input :sequence
+        = f.input :throughline, as: :select, collection: ["Main","Impact", "Objective", "Relationship"], include_blank: true, allow_blank: true
+        .form-actions
+          = f.button :submit, "Save", class: "btn btn-primary"
+      .col-md-8.editor  
+        = f.input :summary
+        = f.input :body
+      .col-md-2.attributes
+        .card
+          .card-body
+            = f.input :resolution
+        .card
+          .card-body    
+            = f.input :conflict
+        .card.section-notes
+          .card-title
+            %label
+              =link_to "notes", edit_note_modal_path(section_id: @section.id), remote: true
+          %ul.list-group.list-group-flush        
+            - @section.section_notes.each do |note|
+              %li.list-group-item
+                =note.note
+    .row
+      .col-md-2
+      .col-md-8.footnotes
+        - @section.section_footnotes.each do |footnote|
+          %sup
+            =footnote.a_number 
+          =footnote.footnote
+          %br
+      .col-md-2
+
+
+.modal.fade{ role: "dialog", id: "edit_note_modal_box" }
+.modal.fade{ role: "dialog", id: "edit_footnote_modal_box" }
